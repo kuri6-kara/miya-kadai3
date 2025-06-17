@@ -1,6 +1,6 @@
 ## アプリケーション名
 ```
-もぎたて
+Pigly
 ```
 
 ## 環境構築
@@ -8,7 +8,7 @@
 Dockerビルド
 　
 　1.リポジトリからダウンロード
-　$git clone git@github.com:kuri6-kara/miya-kadai2.git
+　$git clone git@github.com:kuri6-kara/miya-kadai3.git
 　2.srcディレクトリにある「.env.example」をコピーして 「.env」を作成しDBの設定を変更
 　　$cp .env.example .env
 　　　DB_HOST=mysql
