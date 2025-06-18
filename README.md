@@ -48,6 +48,6 @@ srcディレクトリにあるstorageディレクトリ以下の権限を変更
 
 ## URL
 ```
-　・商品一覧：http://localhost/products/
+　・トップページ（管理画面）：http://localhost/weight_logs/
 　・phpMyAdmin：http://localhost:8080/
 ```
