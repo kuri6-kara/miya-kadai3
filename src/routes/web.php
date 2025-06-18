@@ -16,3 +16,4 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/weight_logs', [AdminController::class, 'index']);
+Route::get('/weight_logs/search', [AdminController::class, 'search']);

@@ -16,3 +16,13 @@ class AdminController extends Controller
         return view('admin', compact('weight_targets', 'weight_logs'));
     }
 }
+
+public function search(Request $request)
+    {
+        $startDate = $request->input('from');
+        $endDate = $request->input('until');
+
+        $results = Model::whereBetween('date', [$Weight_log])->get();
+
+        return view('your.view', compact('results'));
+    }
