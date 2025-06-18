@@ -19,10 +19,10 @@ class AdminController extends Controller
 
 public function search(Request $request)
     {
-        $startDate = $request->input('from');
-        $endDate = $request->input('until');
+        $weight_logs = $request->input('from');
+        $weight_logs = $request->input('until');
 
-        $results = Model::whereBetween('date', [$Weight_log])->get();
+        $results = Model::whereBetween('date', [$Weight_logs])->get();
 
-        return view('your.view', compact('results'));
+        return view('admin', compact('weight_logs'));
     }
