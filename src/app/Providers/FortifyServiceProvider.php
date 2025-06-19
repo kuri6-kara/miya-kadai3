@@ -30,12 +30,7 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::registerView(function () {
-            return view('auth.register_step1');
-        });
-
-        Fortify::register(function (array $input) {
-            session()->put('register_step1', $input);
-            return redirect('/register/step2');
+            return view('auth.register');
         });
 
         Fortify::loginView(function () {

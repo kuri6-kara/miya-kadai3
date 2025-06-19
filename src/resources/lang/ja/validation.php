@@ -94,12 +94,12 @@ return [
     // 'not_regex'            => ':attributeの形式が無効です。',
     // 'numeric'              => ':attributeには、数字を指定してください。',
     'name.required'                 => 'お名前を入力してください',
-    'email.required'                => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
-    'email.email' => 'メールアドレスはメール形式で入力してください',
+    'email.required'                => 'メールアドレスを入力してください',
+    'email.email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
     'password.required'             => 'パスワードを入力してください',
     // 'present'              => ':attributeが存在している必要があります。',
     // 'regex'                => ':attributeには、有効な正規表現を指定してください。',
-    // 'required'             => ':attributeは、必ず指定してください。',
+    'required'             => ':attribute入力してください',
     // 'required_if'          => ':otherが:valueの場合、:attributeを指定してください。',
     // 'required_unless'      => ':otherが:values以外の場合、:attributeを指定してください。',
     // 'required_with'        => ':valuesが指定されている場合、:attributeも指定してください。',
@@ -149,5 +149,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'お名前を',
+        'email' => 'メールアドレスは「ユーザー名@ドメイン」形式で',
+        'email' => 'メールアドレスを',
+        'password' => 'パスワードを',
+    ],
 ];
