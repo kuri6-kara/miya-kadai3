@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GoalController;
 
 
 /*
@@ -22,3 +23,6 @@ Route::post('/weight_logs/create', [AdminController::class, 'store']);
 Route::get('/weight_logs/{:weight_LogId}', [AdminController::class, 'show']);
 Route::patch('/weight_logs/{:weight_LogId}/update', [AdminController::class, 'update']);
 Route::delete('/weight_logs/{:weight_LogId}/delete', [AdminController::class, 'destroy']);
+
+Route::get('/weight_logs/goal_setting', [GoalController::class, 'index']);
+Route::patch('/weight_logs/{:weight_LogId}/update', [GoalController::class, 'update']);
