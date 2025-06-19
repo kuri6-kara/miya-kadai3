@@ -75,7 +75,7 @@
             <button type="button" onclick="location.href='/weight_logs' ">戻る</button>
         </div>
         <div class="update-form__button">
-            <button type="submit">登録</button>
+            <button type="submit">更新</button>
         </div>
     </form>
 
