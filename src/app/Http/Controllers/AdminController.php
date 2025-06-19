@@ -33,11 +33,29 @@ class AdminController extends Controller
     return view('admin', compact('weight_logs'));
     }
 
+    public function store(Request $request)
+    {
+        $weight_logs = Weight_log::create(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
+        return redirect('/weight_logs');
+    }
+
+    public function show($weight_logId)
+    {
+        $weight_log = Weight_log::find($weight_logId);
+        return view('show', compact('weight_log'));
+    }
+
     public function update(Request $request, $weight_logId)
     {
         $data = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
         $weight_log = Weight_log::find($weight_logId);
         $weight_log->update($data);
+        return redirect('/weight_logs');
+    }
+
+    public function destroy(Request $request, $weight_logId)
+    {
+        Weight_log::find($weight_logId)->delete();
         return redirect('/weight_logs');
     }
 }
