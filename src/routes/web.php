@@ -17,3 +17,8 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/weight_logs', [AdminController::class, 'index']);
 Route::get('/weight_logs/search', [AdminController::class, 'search']);
+Route::post('/weight_logs/create', [AdminController::class, 'store']);
+
+Route::get('/weight_logs/{:weight_LogId}', [AdminController::class, 'show']);
+Route::patch('/weight_logs/{:weight_LogId}/update', [AdminController::class, 'update']);
+Route::delete('/weight_logs/{:weight_LogId}/delete', [AdminController::class, 'destroy']);
