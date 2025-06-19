@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -15,6 +16,10 @@ use App\Http\Controllers\GoalController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::middleware('auth')->group(function () {
+    Route::get('/weight_logs', [AuthController::class, 'index']);
+});
 
 Route::get('/weight_logs', [AdminController::class, 'index']);
 Route::get('/weight_logs/search', [AdminController::class, 'search']);

@@ -21,10 +21,12 @@
                 <button type="button" onclick="location.href='/weight_logs/goal_setting' ">目標体重設定</button>
             </li>
             <li class="logout__button">
+                @if (Auth::check())
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit">ログアウト</button>
                 </form>
+                @endif
             </li>
         </header>
     </div>
