@@ -12,12 +12,12 @@
 </head>
 
 <body>
-    <div class="app">
-        <header class="header">
-            <h1 class="header__title">
-                PiGLy
-            </h1>
-            <li class="change-form__button">
+    <div class="header">
+        <div class="header__left">
+            PiGLy
+        </div>
+        <div class="header__right">
+            <li class="goal-form__button">
                 <button type="button" onclick="location.href='/weight_logs/goal_setting' ">目標体重設定</button>
             </li>
             <li class="logout__button">
@@ -28,7 +28,7 @@
                 </form>
                 @endif
             </li>
-        </header>
+        </div>
     </div>
 
     <main>
