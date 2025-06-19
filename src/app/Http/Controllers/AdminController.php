@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Weight_logRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Weight_target;
@@ -33,7 +34,7 @@ class AdminController extends Controller
     return view('admin', compact('weight_logs'));
     }
 
-    public function store(Request $request)
+    public function store(Weight_logRequest $request)
     {
         $weight_logs = Weight_log::create(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
         return redirect('/weight_logs');
@@ -45,7 +46,7 @@ class AdminController extends Controller
         return view('show', compact('weight_log'));
     }
 
-    public function update(Request $request, $weight_logId)
+    public function update(Weight_logRequest $request, $weight_logId)
     {
         $data = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
         $weight_log = Weight_log::find($weight_logId);

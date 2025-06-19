@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Weight_target;
-
+use App\Http\Requests\GoalRequest;
 
 class GoalController extends Controller
 {
@@ -14,7 +14,7 @@ class GoalController extends Controller
         return view('goal', compact('weight_targets'));
     }
 
-    public function update(Request $request, $weight_targetId)
+    public function update(GoalRequest $request, $weight_targetId)
     {
         $data = $request->only(['target_weight']);
         $weight_target = Weight_target::find($weight_targetId);
