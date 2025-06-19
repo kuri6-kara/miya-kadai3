@@ -14,7 +14,7 @@ class Weight_target extends Model
         'target_weight',
     ];
 
-    public function seasons()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

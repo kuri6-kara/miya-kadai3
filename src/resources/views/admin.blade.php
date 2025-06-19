@@ -134,8 +134,10 @@
                 </form>
             </div>
         </div>
-
     </table>
+    <div class="pagination-content">
+        {{ $products->links('vendor.pagination.semantic-ui') }}
+    </div>
 </div>
 
 

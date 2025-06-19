@@ -18,7 +18,7 @@ class Weight_log extends Model
         'exercise_content',
     ];
 
-    public function seasons()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

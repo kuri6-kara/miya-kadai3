@@ -13,12 +13,11 @@ class AdminController extends Controller
     public function index()
     {
         $weight_targets = Weight_target::all();
-        $weight_logs = Weight_log::all();
+        $weight_logs = Weight_log::Paginate(9);
         return view('admin', compact('weight_targets', 'weight_logs'));
     }
-}
 
-public function search(Request $request)
+    public function search(Request $request)
     {
         $query = Weight_log::query();
 
@@ -30,5 +29,15 @@ public function search(Request $request)
 
         $results = $query->get();
 
-        return view('admin', compact('weight_logs'));
+        $weight_logs = $query->Paginate(9);
+    return view('admin', compact('weight_logs'));
     }
+
+    public function update(Request $request, $weight_logId)
+    {
+        $data = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
+        $weight_log = Weight_log::find($weight_logId);
+        $weight_log->update($data);
+        return redirect('/weight_logs');
+    }
+}
