@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function index()
     {
         $weight_targets = Weight_target::all();
-        $weight_logs = weight_log::all();
+        $weight_logs = Weight_log::all();
         return view('admin', compact('weight_targets', 'weight_logs'));
     }
 }
@@ -27,7 +27,7 @@ public function search(Request $request)
         $endDate = Carbon::parse($request->input('end_date'));
         $query->whereBetween('date', [$startDate, $endDate]);
     }
-    
+
         $results = $query->get();
 
         return view('admin', compact('weight_logs'));
