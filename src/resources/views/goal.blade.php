@@ -8,10 +8,15 @@
 <div class="goal">
     <form action="/weight_logs/goal_setting" method="POST">
         @csrf
-        <h2 class="form-title">目標体重設定</h2>
+        <div class="form-title">目標体重設定</div>
         <div class="form-content">
             <input type="number" name="weight" value="{{ $weight_target['target_weight'] }}" />
             <p>kg</p>
+        </div>
+        <div class="form__error">
+            @error('target_weight')
+            {{ $message }}
+            @enderror
         </div>
 
         <div class="return-form__button">
