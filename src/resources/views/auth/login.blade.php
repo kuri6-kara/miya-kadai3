@@ -41,7 +41,7 @@
                     <button class="login-form__btn btn" type="submit">ログイン</button>
                 </form>
             </div>
-            <a class="register__link" href="/register/step1">アカウント作成はこちら</a>
+            <a class="register__link" href="/register">アカウント作成はこちら</a>
         </div>
     </main>
 </body>
