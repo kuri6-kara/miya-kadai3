@@ -17,9 +17,9 @@
         <form action="/weight_logs/search" method="GET">
             @csrf
             <div>
-                <input type="date" name="from" placeholder="年/月/日" value="{{ $date }}">
+                <input type="date" name="from" placeholder="年/月/日" value="{{ old('date') }}">
                 <p>{{ "~" }}</p>
-                <input type="date" name="until" placeholder="年/月/日" value="{{ $date }}">
+                <input type="date" name="until" placeholder="年/月/日" value="{{ old('date') }}">
             </div>
             <div>
                 <input class="search-form__search-btn btn" type="submit" value="検索">
@@ -138,7 +138,7 @@
             @endforeach
         </table>
         <div class="pagination-content">
-            {{ $products->links('vendor.pagination.semantic-ui') }}
+            {{ $weight_logs->links('vendor.pagination.semantic-ui') }}
         </div>
     </div>
 </div>
