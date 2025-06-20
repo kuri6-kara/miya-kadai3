@@ -17,17 +17,19 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/weight_logs', [AuthController::class, 'index']);
+// });
+
 Route::middleware('auth')->group(function () {
-    Route::get('/weight_logs', [AuthController::class, 'index']);
+    Route::get('/weight_logs', [AdminController::class, 'index']);
+    Route::get('/weight_logs/search', [AdminController::class, 'search']);
+    Route::post('/weight_logs/create', [AdminController::class, 'store']);
+
+    Route::get('/weight_logs/{:weight_LogId}', [AdminController::class, 'show']);
+    Route::patch('/weight_logs/{:weight_LogId}/update', [AdminController::class, 'update']);
+    Route::delete('/weight_logs/{:weight_LogId}/delete', [AdminController::class, 'destroy']);
+
+    Route::get('/weight_logs/goal_setting', [GoalController::class, 'index']);
+    Route::patch('/weight_logs/{:weight_LogId}/update', [GoalController::class, 'update']);
 });
-
-Route::get('/weight_logs', [AdminController::class, 'index']);
-Route::get('/weight_logs/search', [AdminController::class, 'search']);
-Route::post('/weight_logs/create', [AdminController::class, 'store']);
-
-Route::get('/weight_logs/{:weight_LogId}', [AdminController::class, 'show']);
-Route::patch('/weight_logs/{:weight_LogId}/update', [AdminController::class, 'update']);
-Route::delete('/weight_logs/{:weight_LogId}/delete', [AdminController::class, 'destroy']);
-
-Route::get('/weight_logs/goal_setting', [GoalController::class, 'index']);
-Route::patch('/weight_logs/{:weight_LogId}/update', [GoalController::class, 'update']);
