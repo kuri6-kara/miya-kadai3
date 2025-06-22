@@ -29,30 +29,6 @@
 
         <div class="create-form__button">
             <button type="button" onclick="location.href='/weight_logs/create' ">データ追加</button>
-        </div>
-    </div>
-
-    <div class="content1">
-        <table class="form-content">
-            <tr class="admin__row">
-                <th class="admin__label">日付</th>
-                <th class="admin__label">体重</th>
-                <th class="admin__label">食事摂取カロリー</th>
-                <th class="admin__label">運動時間</th>
-                <th class="admin__label"></th>
-            </tr>
-            @foreach($weight_logs as $weight_log)
-            <tr class="admin__row">
-                <td class="admin__data">{{$weight_log->date}}</td>
-                <td class="admin__data">{{$weight_log->weight}}</td>
-                <td class="admin__data">{{$weight_log->calories}}</td>
-                <td class="admin__data">{{$weight_log->exercise_time}}</td>
-                <td class="admin__data">
-                    <a href="#{{$weight_log->id}}">
-                        <img src="img/Group.png">
-                    </a>
-                </td>
-            </tr>
 
             <div class="modal" id="{{$weight_log->id}}">
                 <a href="#!" class="modal-overlay"></a>
@@ -135,6 +111,32 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="content1">
+        <table class="form-content">
+            <tr class="admin__row">
+                <th class="admin__label">日付</th>
+                <th class="admin__label">体重</th>
+                <th class="admin__label">食事摂取カロリー</th>
+                <th class="admin__label">運動時間</th>
+                <th class="admin__label"></th>
+            </tr>
+            @foreach($weight_logs as $weight_log)
+            <tr class="admin__row">
+                <td class="admin__data">{{$weight_log->date}}</td>
+                <td class="admin__data">{{$weight_log->weight}}</td>
+                <td class="admin__data">{{$weight_log->calories}}</td>
+                <td class="admin__data">{{$weight_log->exercise_time}}</td>
+                <td class="admin__data">
+                    <a href="#{{$weight_log->id}}">
+                        <img src="img/Group.png">
+                    </a>
+                </td>
+            </tr>
+
+
             @endforeach
         </table>
         <div class="pagination-content">
