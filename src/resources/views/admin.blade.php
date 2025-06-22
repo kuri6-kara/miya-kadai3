@@ -136,7 +136,7 @@
                     <td class="admin__data">{{$weight_log->calories}}</td>
                     <td class="admin__data">{{$weight_log->exercise_time}}</td>
                     <td class="admin__data">
-                        <a href="#{{$weight_log->id}}">
+                        <a href="/weight_logs/{{$weight_log->id}}">
                             <img src="img/Group.png">
                         </a>
                     </td>
