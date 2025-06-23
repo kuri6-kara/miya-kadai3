@@ -17,9 +17,9 @@
         <form action="/weight_logs/search" method="GET">
             @csrf
             <div>
-                <input type="date" name="from" placeholder="年/月/日" value="{{ old('date') }}">
+                <input type="date" name="start_date" placeholder="年/月/日" value="{{ request('date') }}">
                 <p>{{ "~" }}</p>
-                <input type="date" name="until" placeholder="年/月/日" value="{{ old('date') }}">
+                <input type="date" name="end_date" placeholder="年/月/日" value="{{ request('date') }}">
             </div>
             <div>
                 <input class="search-form__search-btn btn" type="submit" value="検索">
