@@ -18,13 +18,19 @@
         </div>
         <div class="header__right">
             <li class="goal-form__button">
-                <button type="button" onclick="location.href='/weight_logs/goal_setting' ">目標体重設定</button>
+                <button type="button" onclick="location.href='/weight_logs/goal_setting' ">
+                    <img src="{{ asset('img/Group(3).png') }}">
+                    目標体重設定
+                </button>
             </li>
             <li class="logout__button">
                 @if (Auth::check())
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit">ログアウト</button>
+                    <button type="submit">
+                        <img src="{{ asset('img/Group(4).png') }}">
+                        ログアウト
+                    </button>
                 </form>
                 @endif
             </li>

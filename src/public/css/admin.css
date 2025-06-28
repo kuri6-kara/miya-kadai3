@@ -109,21 +109,6 @@ select {
   background-color: #D9C6B5;
 }
 
-/* エクスポートボタン */
-/* .export-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 32px;
-}
-
-.export__btn {
-  background-color: #E1DBD6;
-  color: #8B7969;
-  font-weight: 400;
-} */
-
-/* テーブル */
 .admin__table {
   margin-top: 16px;
   width: 100%;

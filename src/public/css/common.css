@@ -28,16 +28,14 @@
 
 .goal-form__button {
     background-color: rgba(247, 247, 247, 1);
-    height: 44px;
-    gap: 10px;
     padding: 10px;
+    list-style: none;
     border-radius: 5px;
 }
 
 .logout__button {
     background: rgba(247, 247, 247, 1);
-    height: 44;
-    gap: 10px;
+    list-style: none;
     padding: 10px;
     border-radius: 5px;
 }
