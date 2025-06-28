@@ -13,7 +13,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $weight_targets = Weight_target::all();
+        $weight_targets = Weight_target::where('user_id', auth()->id())->first();
+        dump($weight_targets);
         $weight_logs = Weight_log::Paginate(9);
         return view('admin', compact('weight_targets', 'weight_logs'));
     }
@@ -32,11 +33,8 @@ class AdminController extends Controller
             $query->where('date', '<=', $endDate->endOfDay());
         }
 
-
-        $results = $query->get();
-
         $weight_logs = $query->Paginate(9);
-    return view('admin', compact('weight_logs'));
+        return view('admin', compact('weight_logs'));
     }
 
     public function store(Weight_logRequest $request)

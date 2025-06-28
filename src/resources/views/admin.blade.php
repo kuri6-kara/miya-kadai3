@@ -8,7 +8,7 @@
 
 <div class="upper_part">
     <label for="target_weight">目標体重</label>
-    <input type="number" name="target_weight" value="{{ old('target_weight') }}" />
+    <div>{{$weight_targets->target_weight}}kg</div>
 
 </div>
 
