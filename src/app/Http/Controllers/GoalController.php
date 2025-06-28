@@ -26,6 +26,7 @@ class GoalController extends Controller
     {
         return view('auth.register_step2');
     }
+    
     public function store(GoalRequest $request)
     {
         $data = $request->only(['weight', 'target_weight']);
