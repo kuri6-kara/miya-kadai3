@@ -6,22 +6,26 @@
 
 @section('content')
 
-<div class="admin">
-    <div class="upper_part">
-        <label for="target_weight">目標体重</label>
-        <input type="number" name="target_weight" value="{{ old('target_weight') }}" />
+<div class="upper_part">
+    <label for="target_weight">目標体重</label>
+    <input type="number" name="target_weight" value="{{ old('target_weight') }}" />
 
-    </div>
+</div>
 
-    <div class="content1">
-        <form action="/weight_logs/search" method="GET">
+<div class="content">
+    <div class="form1">
+        <form action="/weight_logs/search" method="GET" class="search-form">
             @csrf
-            <div>
-                <input type="date" name="start_date" placeholder="年/月/日" value="{{ request('date') }}">
-                <p>{{ "~" }}</p>
-                <input type="date" name="end_date" placeholder="年/月/日" value="{{ request('date') }}">
+            <div class="search-start__date">
+                <input type="date" class="date" name="start_date" placeholder="年/月/日" value="{{ request('date') }}">
+                <img src="{{ asset('img/Polygon 2.png') }}" alt="アイコン">
             </div>
-            <div>
+            <p>{{ "~" }}</p>
+            <div class="search-end__date">
+                <input type="date" class="date" name="end_date" placeholder="年/月/日" value="{{ request('date') }}">
+                <img src="{{ asset('img/Polygon 2.png') }}" alt="アイコン">
+            </div>
+            <div class="form-btn">
                 <input class="search-form__search-btn btn" type="submit" value="検索">
                 <input class="search-form__reset-btn btn" type="submit" value="リセット" name="reset">
             </div>
@@ -119,35 +123,36 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="content1">
-            <table class="form-content">
-                <tr class="admin__row">
-                    <th class="admin__label">日付</th>
-                    <th class="admin__label">体重</th>
-                    <th class="admin__label">食事摂取カロリー</th>
-                    <th class="admin__label">運動時間</th>
-                    <th class="admin__label"></th>
-                </tr>
-                @foreach($weight_logs as $weight_log)
-                <tr class="admin__row">
-                    <td class="admin__data">{{$weight_log->date}}</td>
-                    <td class="admin__data">{{$weight_log->weight}}</td>
-                    <td class="admin__data">{{$weight_log->calories}}</td>
-                    <td class="admin__data">{{$weight_log->exercise_time}}</td>
-                    <td class="admin__data">
-                        <a href="/weight_logs/{{$weight_log->id}}">
-                            <img src="{{ asset('img/Group.png') }}">
-                        </a>
-                    </td>
-                </tr>
+    <div class="form2">
+        <table class="form-content">
+            <tr class="admin__row">
+                <th class="admin__label">日付</th>
+                <th class="admin__label">体重</th>
+                <th class="admin__label">食事摂取カロリー</th>
+                <th class="admin__label">運動時間</th>
+                <th class="admin__label"></th>
+            </tr>
+            @foreach($weight_logs as $weight_log)
+            <tr class="admin__row">
+                <td class="admin__data">{{$weight_log->date}}</td>
+                <td class="admin__data">{{$weight_log->weight}}</td>
+                <td class="admin__data">{{$weight_log->calories}}</td>
+                <td class="admin__data">{{$weight_log->exercise_time}}</td>
+                <td class="admin__data">
+                    <a href="/weight_logs/{{$weight_log->id}}">
+                        <img src="{{ asset('img/Group.png') }}">
+                    </a>
+                </td>
+            </tr>
 
 
-                @endforeach
-            </table>
-            <div class="pagination-content">
-                {{ $weight_logs->links('vendor.pagination.semantic-ui') }}
-            </div>
+            @endforeach
+        </table>
+        <div class="pagination-content">
+            {{ $weight_logs->links('vendor.pagination.semantic-ui') }}
         </div>
     </div>
-    @endsection
+</div>
+@endsection

@@ -38,7 +38,7 @@
     </div>
 
     <main>
-        <div class="content">
+        <div class="admin">
             @yield('content')
         </div>
     </main>
