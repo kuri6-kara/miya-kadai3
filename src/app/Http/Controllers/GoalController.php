@@ -21,17 +21,4 @@ class GoalController extends Controller
         $weight_target->update($data);
         return redirect('/weight_logs');
     }
-
-    public function create()
-    {
-        return view('auth.register_step2');
-    }
-    
-    public function store(GoalRequest $request)
-    {
-        $data = $request->only(['weight', 'target_weight']);
-        $data['user_id'] = auth()->id();
-        Weight_target::create($data);
-        return redirect('/weight_logs');
-    }
 }
