@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
 
 
@@ -26,8 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/weight_logs/search', [AdminController::class, 'search']);
     Route::post('/weight_logs/create', [AdminController::class, 'store']);
 
-    Route::get('/register/step2', [GoalController::class, 'create']);
-    Route::post('/register/step2', [GoalController::class, 'store']);
+    Route::get('/register/step2', [RegisterController::class, 'create']);
+    Route::post('/register/step2', [RegisterController::class, 'store']);
 
 
     Route::get('/weight_logs/{weight_LogId}', [AdminController::class, 'show']);
