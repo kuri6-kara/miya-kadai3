@@ -24,8 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'weight' => ['required', 'digits_between:1,4', 'regex:/^\d{1,4}\.\d{1})?$/'],
-            'target_weight' => ['required', 'digits_between:1,4', 'regex:/^\d{1,4}\.\d{1})?$/'],
+            'weight' => ['required', 'digits_between:1,4', 'regex:/^\d{1,4}(\.\d{1})?$/'],
+            'target_weight' => ['required', 'digits_between:1,4', 'regex:/^\d{1,4}(\.\d{1})?$/'],
         ];
     }
 
