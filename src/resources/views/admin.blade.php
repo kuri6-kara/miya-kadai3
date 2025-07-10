@@ -8,8 +8,29 @@
 
 <div class="upper_part">
     <label for="target_weight">目標体重</label>
-    <div>{{$weight_targets->target_weight}}kg</div>
+    <div>{{ $weight_targets->target_weight ?? '未設定' }}kg</div> {{-- 目標体重が未設定の場合の表示 --}}
 
+    @if ($current_weight !== null)
+    <label>現在の体重</label>
+    <div>{{ $current_weight }}kg</div>
+
+    @if ($weight_difference !== null)
+    <label>目標との差異</label>
+    <div>
+        @if ($weight_difference > 0)
+        目標より <span style="color: red;">{{ $weight_difference }}kg</span> 重いです
+        @elseif ($weight_difference < 0)
+            目標まであと <span style="color: green;">{{ abs($weight_difference) }}kg</span> です
+            @else
+            目標体重と同じです！
+            @endif
+    </div>
+    @else
+    <div>目標体重が設定されていないため、差異を計算できません。</div>
+    @endif
+    @else
+    <div>まだ体重ログがありません。</div>
+    @endif
 </div>
 
 <div class="content">

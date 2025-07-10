@@ -25,26 +25,29 @@ class AdminController extends Controller
 
         // 現在の体重と目標体重の差異を計算
         // 空の箱を作成
-        // $current_weight = null;
-        // $weight_difference = null;
+        // $current_weight と $weight_difference を必ず初期化する
+        $current_weight = null;
+        $weight_difference = null;
 
-        // if ($latest_weight_log) {
-        //     $current_weight = $latest_weight_log->weight;
+        // 最新の体重ログが存在する場合のみ、現在の体重を設定し、差異を計算
+        if ($latest_weight_log) {
+            $current_weight = $latest_weight_log->weight; // 最新の体重を設定
 
-        //     if ($weight_targets && $weight_targets->target_weight !== null) {
-        // 目標体重 - 現在の体重 で差異を計算
-        // マイナスの値は「目標まであと〇kg」
-        // プラスの値は「目標を超過〇kg」
-        $weight_difference = $latest_weight_log->weight - $weight_targets->target_weight;
+                if ($weight_targets && $weight_targets->target_weight !== null) {
+                // 目標体重 - 現在の体重 で差異を計算
+                // マイナスの値は「目標まであと〇kg」
+                // プラスの値は「目標を超過〇kg」
+                $weight_difference = $current_weight - $weight_targets->target_weight;
         dump($weight_difference);
-        //     }
-        // }
+            }
+        }
 
         // 体重ログをページネート
         $weight_logs = Weight_log::where('user_id', auth()->id())->Paginate(9); // ユーザーのログのみ表示するよう変更
 
         return view('admin', compact('weight_targets', 'weight_logs', 'latest_weight_log', 'weight_difference'));
     }
+
 
     public function search(Request $request)
     {
