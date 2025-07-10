@@ -25,7 +25,7 @@ class Weight_logRequest extends FormRequest
     {
         return [
             'date' => ['required'],
-            'weight' => ['required', 'integer', 'digits:4', 'regex:/^\d{1,3}\.\d{1}$/'],
+            'weight' => ['required',  'regex:/^\d{1,3}\.\d{1}$/'],
             'calories' => ['required', 'integer'],
             'exercise_time' => ['required'],
             'exercise_content' => ['string', 'max:120'],
@@ -37,8 +37,8 @@ class Weight_logRequest extends FormRequest
         return [
             'date.required' => '日付をしてください',
             'weight.required' => '体重を入力してください',
-            'weight.integer' => '数字で入力してください',
-            'weight.digits' => '４桁までの数字で入力してください',
+            
+            
             'weight.regex' => '小数点は１桁で入力してください',
             'calories.required' => '摂取カロリーを入力してください',
             'calories.integer' => '数字で入力してください',

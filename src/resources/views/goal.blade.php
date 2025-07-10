@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="goal">
-    <form action="/weight_logs/goal_setting" method="POST">
+    <form action="/weight_logs/goal_setting/update" method="POST">
         @methodPATCH
         @csrf
         <div class="form-title">目標体重設定</div>

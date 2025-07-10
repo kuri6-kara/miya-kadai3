@@ -36,5 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/weight_logs/{weight_LogId}/delete', [AdminController::class, 'destroy']);
 
     Route::get('/weight_logs/goal_setting', [GoalController::class, 'index']);
-    Route::patch('/weight_logs/{weight_LogId}/update', [GoalController::class, 'update']);
+    // ★ここを修正します！ GoalController の update ルートのURIを変更します。★
+    // 例: 目標体重はユーザーごとに1つなので、IDは不要かもしれません。
+    // または、goal_setting の下に update を置く。
+    Route::patch('/weight_logs/goal_setting/update', [GoalController::class, 'update']);
+    // もし GoalController の update が特定の目標IDを更新するなら、以下のようにすることも可能です。
+    // Route::patch('/weight_targets/{targetId}', [GoalController::class, 'update']);
 });

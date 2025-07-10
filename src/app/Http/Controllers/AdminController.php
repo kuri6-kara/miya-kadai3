@@ -100,6 +100,8 @@ class AdminController extends Controller
 
     public function update(Weight_logRequest $request, $weight_logId)
     {
+        dump('update');
+        // dd('AdminController update method reached!');
         $data = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
         $weight_log = Weight_log::find($weight_logId);
         $weight_log->update($data);
