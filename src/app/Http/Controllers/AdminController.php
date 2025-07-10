@@ -45,7 +45,7 @@ class AdminController extends Controller
         // 体重ログをページネート
         $weight_logs = Weight_log::where('user_id', auth()->id())->Paginate(9); // ユーザーのログのみ表示するよう変更
 
-        return view('admin', compact('weight_targets', 'weight_logs', 'latest_weight_log', 'weight_difference'));
+        return view('admin', compact('weight_targets', 'weight_logs', 'latest_weight_log', 'current_weight', 'weight_difference'));
     }
 
 
@@ -69,15 +69,34 @@ class AdminController extends Controller
 
     public function store(Weight_logRequest $request)
     {
-        $weight_logs = Weight_log::create(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
+        // 以前のやり取りで修正した内容を適用します
+        // Weight_log に保存するデータ
+        $weightLogData = $request->only(['weight', 'calories', 'exercise_time', 'exercise_content']);
+        $weightLogData['user_id'] = auth()->id();
+        $weightLogData['date'] = Carbon::now()->toDateString(); // 今日の日付を自動登録
+
+        // Weight_target に保存するデータ（もしフォームで目標体重も送信している場合）
+        // もし目標体重がこのフォームで送信されていないなら、この部分は削除してください。
+        // RegisterRequest に target_weight のバリデーションがあるなら、フォームにも必要です。
+        // ここでは、目標体重は別のフォームで設定済みと仮定し、このstoreメソッドでは扱わない方がシンプルかもしれません。
+        // もし、このstoreメソッドで目標体重も更新するなら、以下のようにします。
+        // $targetWeightData = $request->only(['target_weight']);
+        // $targetWeightData['user_id'] = auth()->id();
+        // Weight_target::updateOrCreate(['user_id' => auth()->id()], $targetWeightData);
+        // updateOrCreate を使うことで、既存の目標体重があれば更新、なければ新規作成します。
+
+        Weight_log::create($weightLogData); // 修正後のデータで作成
+
         return redirect('/weight_logs');
     }
 
     public function show($weight_logId)
     {
         $weight_log = Weight_log::find($weight_logId);
+
         return view('show', compact('weight_log'));
     }
+
 
     public function update(Weight_logRequest $request, $weight_logId)
     {
