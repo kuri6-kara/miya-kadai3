@@ -40,6 +40,8 @@
     </div>
 </div>
 
+
+
 <div class="content">
     <div class="form1">
         <form action="/weight_logs/search" method="GET" class="search-form">
@@ -59,6 +61,7 @@
             </div>
         </form>
 
+        {{-- 「データを追加」ボタンとモーダル本体 --}}
         <div class="create-form__button">
             <label class="btn-submit" for="modal-toggle">データを追加</label>
             @if ($errors->any())
@@ -78,7 +81,8 @@
                                     <span class="form--required">必須</span>
                                 </div>
                                 <div class="form-content">
-                                    <input class="modal-form__date" type="date" name="date" value="{{ old('date') }}">
+                                    {{-- ★日付入力フィールド: デフォルトで当日日付、カレンダー属性使用★ --}}
+                                    <input class="modal-form__date" type="date" name="date" value="{{ old('date', date('Y-m-d')) }}">
                                 </div>
                                 <div class="form__error">
                                     @error('date')
@@ -91,7 +95,8 @@
                                     <span class="form--required">必須</span>
                                 </div>
                                 <div class="form-content">
-                                    <input type="number" name="weight" placeholder="50.0" value="{{ old('price') }}" />
+                                    {{-- ★体重入力フィールド: 数値入力、小数点以下1桁対応★ --}}
+                                    <input type="number" name="weight" placeholder="50.0" value="{{ old('weight') }}" step="0.1" />
                                     <p>kg</p>
                                 </div>
                                 <div class="form__error">
@@ -119,7 +124,8 @@
                                     <span class="form--required">必須</span>
                                 </div>
                                 <div class="form-content">
-                                    <input type="time" name="exercise_time" placeholder="00:00" value="{{ old('exercise_time') }}" />
+                                    {{-- ★運動時間入力フィールド: "00:00"形式、時間入力属性使用★ --}}
+                                    <input type="time" name="exercise_time" placeholder="00:00" value="{{ old('exercise_time') ?? '00:00' }}" />
                                 </div>
                                 <div class="form__error">
                                     @error('exercise_time')
@@ -169,13 +175,12 @@
                 <td class="admin__data">{{$weight_log->calories}}</td>
                 <td class="admin__data">{{$weight_log->exercise_time}}</td>
                 <td class="admin__data">
-                    <a href="/weight_logs/{{$weight_log->id}}">
+                    {{-- ★アイコン画像をクリックするとモーダルが開くように変更★ --}}
+                    <label for="modal-toggle" style="cursor: pointer;">
                         <img src="{{ asset('img/Group.png') }}">
-                    </a>
+                    </label>
                 </td>
             </tr>
-
-
             @endforeach
         </table>
         <div class="pagination-content">
