@@ -8,6 +8,30 @@
     gap: 30px;
 }
 
+.weight-summary {
+    display: flex; /* 要素を横並びにする */
+    align-items: center; /* 垂直方向の中央揃え */
+    justify-content: center; /* 水平方向の中央揃え */
+    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
+    gap: 15px; /* 各要素間のスペース */
+    font-size: 1.1em; /* 文字サイズを少し大きく */
+    padding: 10px 0; /* 上下のパディング */
+    margin-bottom: 20px; /* 下の要素との間隔 */
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影 */
+}
+
+.weight-summary span {
+    white-space: nowrap; /* テキストの折り返しを防ぐ */
+}
+
+.weight-summary .separator {
+    color: #ccc; /* 区切り文字の色 */
+    margin: 0 5px; /* 区切り文字の左右のスペース */
+}
+
+
 .form1 {
     display: flex;
     justify-content: space-between;

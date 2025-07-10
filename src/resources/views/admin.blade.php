@@ -7,30 +7,37 @@
 @section('content')
 
 <div class="upper_part">
-    <label for="target_weight">目標体重</label>
-    <div>{{ $weight_targets->target_weight ?? '未設定' }}kg</div> {{-- 目標体重が未設定の場合の表示 --}}
+    {{-- 新しい表示形式 --}}
+    <div class="weight-summary">
+        <span>
+            目標体重:
+            {{ $weight_targets->target_weight ?? '未設定' }}kg
+        </span>
 
-    @if ($current_weight !== null)
-    <label>現在の体重</label>
-    <div>{{ $current_weight }}kg</div>
+        <span class="separator">｜</span>
 
-    @if ($weight_difference !== null)
-    <label>目標との差異</label>
-    <div>
-        @if ($weight_difference > 0)
-        目標より <span style="color: red;">{{ $weight_difference }}kg</span> 重いです
-        @elseif ($weight_difference < 0)
-            目標まであと <span style="color: green;">{{ abs($weight_difference) }}kg</span> です
-            @else
-            目標体重と同じです！
-            @endif
+        <span>
+            目標まで:
+            @if ($weight_difference !== null)
+            @if ($weight_difference > 0)
+            <span style="color: red;">+{{ $weight_difference }}kg</span>
+            @elseif ($weight_difference < 0)
+                <span style="color: green;">-{{ abs($weight_difference) }}kg</span>
+        @else
+        0kg
+        @endif
+        @else
+        計算不可
+        @endif
+        </span>
+
+        <span class="separator">｜</span>
+
+        <span>
+            最新体重:
+            {{ $current_weight ?? '未登録' }}kg
+        </span>
     </div>
-    @else
-    <div>目標体重が設定されていないため、差異を計算できません。</div>
-    @endif
-    @else
-    <div>まだ体重ログがありません。</div>
-    @endif
 </div>
 
 <div class="content">
