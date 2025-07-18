@@ -12,6 +12,7 @@ class GoalController extends Controller
     {
         // ログインユーザーの目標体重を1件だけ取得
         // 存在しない場合は null が返る
+        dd('GoalController index reached');
         $weight_target = Weight_target::where('user_id', auth()->id())->first();
 
         // ビューに単一の weight_target オブジェクトを渡す
