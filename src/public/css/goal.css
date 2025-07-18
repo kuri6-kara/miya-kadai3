@@ -1,0 +1,5 @@
+.form__error {
+    color: red; /* エラーメッセージを赤色にする */
+    font-size: 0.9em; /* 少し小さめのフォントサイズ */
+    margin-top: 5px; /* 上に少し余白 */
+}

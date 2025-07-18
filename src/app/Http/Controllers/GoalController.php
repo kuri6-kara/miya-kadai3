@@ -31,6 +31,6 @@ class GoalController extends Controller
             $data                        // 更新または作成するデータ
         );
 
-        return redirect('/weight_logs')->with('success', '目標体重が更新されました！');
+        return redirect('/weight_logs');
     }
 }

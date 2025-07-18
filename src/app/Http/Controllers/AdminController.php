@@ -92,6 +92,7 @@ class AdminController extends Controller
 
     public function show($weight_logId)
     {
+        dd('AdminController show method reached with ID: ' . $weight_logId);
         $weight_log = Weight_log::find($weight_logId);
 
         return view('show', compact('weight_log'));
