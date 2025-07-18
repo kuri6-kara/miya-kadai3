@@ -30,16 +30,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/register/step2', [RegisterController::class, 'create']);
     Route::post('/register/step2', [RegisterController::class, 'store']);
 
-
-    Route::get('/weight_logs/{weight_LogId}', [AdminController::class, 'show']);
-    Route::patch('/weight_logs/{weight_LogId}/update', [AdminController::class, 'update']);
-    Route::delete('/weight_logs/{weight_LogId}/delete', [AdminController::class, 'destroy']);
-
-    Route::get('/weight_logs/goal_setting', [GoalController::class, 'index']);
+    Route::get('/weight_logs/{weight_Log}', [AdminController::class, 'show']);
+    Route::get('/weight_logs/goal_setting/index', [GoalController::class, 'index']);
     // ★ここを修正します！ GoalController の update ルートのURIを変更します。★
     // 例: 目標体重はユーザーごとに1つなので、IDは不要かもしれません。
     // または、goal_setting の下に update を置く。
     Route::patch('/weight_logs/goal_setting/update', [GoalController::class, 'update']);
     // もし GoalController の update が特定の目標IDを更新するなら、以下のようにすることも可能です。
     // Route::patch('/weight_targets/{targetId}', [GoalController::class, 'update']);
+
+    
+    Route::patch('/weight_logs/{weight_Log}/update', [AdminController::class, 'update']);
+    Route::delete('/weight_logs/{weight_Log}/delete', [AdminController::class, 'destroy']);
 });

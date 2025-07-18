@@ -18,7 +18,7 @@
         </div>
         <div class="header__right">
             <li class="goal-form__button">
-                <button type="button" onclick="location.href='/weight_logs/goal_setting' ">
+                <button type="button" onclick="location.href='/weight_logs/goal_setting/index' ">
                     <img src="{{ asset('img/Group(3).png') }}">
                     目標体重設定
                 </button>

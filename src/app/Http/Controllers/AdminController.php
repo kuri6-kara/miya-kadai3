@@ -90,28 +90,29 @@ class AdminController extends Controller
         return redirect('/weight_logs');
     }
 
-    public function show($weight_logId)
+    public function show(Weight_log $weight_log)
     {
-        // dd('AdminController show method reached with ID: ' . $weight_logId);
-        $weight_log = Weight_log::find($weight_logId);
+        // dd('AdminController show method reached with ID: ' . $weight_log);
+        // $weight_log = Weight_log::find($weight_logId);
 
         return view('show', compact('weight_log'));
     }
 
 
-    public function update(Weight_logRequest $request, $weight_logId)
+    public function update(Weight_logRequest $request, Weight_log $weight_log)
     {
         dump('update');
         // dd('AdminController update method reached!');
         $data = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
-        $weight_log = Weight_log::find($weight_logId);
+        // $weight_log = Weight_log::find($weight_log);
         $weight_log->update($data);
         return redirect('/weight_logs');
     }
 
-    public function destroy(Request $request, $weight_logId)
+    public function destroy(Request $request, Weight_log $weight_log)
     {
-        Weight_log::find($weight_logId)->delete();
+        // Weight_log::find($weight_logId)->delete();
+        $weight_log->delete();
         return redirect('/weight_logs');
     }
 }
