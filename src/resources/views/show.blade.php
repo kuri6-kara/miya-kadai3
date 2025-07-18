@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="show">
-    <form action="/weight_logs/{{ $weight_log['id'] }}/update" method="POST">
+    <form action="/weight_logs/{{ $weight_log }}/update" method="POST">
         @method('PATCH')
         @csrf
         <div class="form-title">
@@ -79,7 +79,7 @@
         </div>
     </form>
 
-    <form class="delete-form" action="/weight_logs/{{ $weight_log['id'] }}/delete" method="POST">
+    <form class="delete-form" action="/weight_logs/{{ $weight_log }}/delete" method="POST">
         @method('DELETE')
         @csrf
         <div class="delete-form__button">
