@@ -18,7 +18,7 @@
                 <div class="register-form_title2">新規会員登録</div>
             </div>
             <div class="register-form_title3">STEP1 アカウント情報の登録</div>
-            <form class="form" action="/register" method="post">
+            <form class="form" action="/register" method="post" novalidate>
                 @csrf
                 <div class="form__group">
                     <div class="form__group-title">

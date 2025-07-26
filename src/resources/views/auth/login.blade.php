@@ -18,7 +18,7 @@
                 <div class="login-form_title2">ログイン</div>
             </div>
             <div class="login-form__inner">
-                <form class="login-form__form" action="/login" method="post">
+                <form class="login-form__form" action="/login" method="post" novalidate>
                     @csrf
                     <div class="login-form__group">
                         <span class="login-form__label">メールアドレス</span>
