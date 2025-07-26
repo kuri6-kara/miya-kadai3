@@ -16,7 +16,6 @@ body {
 }
 
 .login-form__content {
-    max-width: calc(100% - 240px); /* 左右120pxずつなので、合計240pxを引く */
     width: 660px; /* 基本の幅として660pxを設定（max-widthを超えない範囲で） */
 
     /* ★修正点: margin: 40px; を margin: 40px auto; に変更★ */

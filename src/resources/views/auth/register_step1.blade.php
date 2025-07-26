@@ -14,10 +14,10 @@
     <main>
         <div class="register-form__content">
             <div class="register-form__heading">
-                <h1>PiGLy</h1>
-                <h2>新規会員登録</h2>
-                <h3>STEP1 アカウント情報の登録</h3>
+                <div class="register-form_title1">PiGLy</div>
+                <div class="register-form_title2">新規会員登録</div>
             </div>
+            <div class="register-form_title3">STEP1 アカウント情報の登録</div>
             <form class="form" action="/register" method="post">
                 @csrf
                 <div class="form__group">
