@@ -1,12 +1,29 @@
+body {
+    /* ★修正点2: 画像パスを相対パスに変更★ */
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #f0f0f0;
+
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-form__content {
-    width: 580;
-    height: 560;
-    top: 211px;
-    left: 466px;
+    width: 580px;
+    height: 560px;
     gap: 30px;
     padding: 40px;
     border-radius: 24px;
-    background: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .login-form__heading {
