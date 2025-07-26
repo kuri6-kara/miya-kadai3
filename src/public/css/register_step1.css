@@ -16,7 +16,6 @@ body {
 }
 
 .register-form__content {
-    max-width: calc(100% - 240px);
     width: 660px;
     margin: auto;
     padding: 40px;
