@@ -1,5 +1,4 @@
 body {
-    /* ★修正点2: 画像パスを相対パスに変更★ */
     background-image: url('../img/background.jpg');
     background-size: cover;
     background-position: center;
@@ -16,23 +15,39 @@ body {
     align-items: center;
 }
 
+/* ★login-form__content の修正★ */
 .login-form__content {
-    width: 580px;
-    height: 560px;
-    gap: 30px;
-    padding: 40px;
-    border-radius: 24px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+    max-width: calc(100% - 240px); /* 左右120pxずつなので、合計240pxを引く */
+    width: 660px; /* 基本の幅として660pxを設定（max-widthを超えない範囲で） */
 
-.login-form__heading {
-    height: 132px;
+    margin-top: 40px; /* 上部に40pxの余白 */
+    margin-left: auto; /* 左右をautoで中央寄せ */
+    margin-right: auto; /* 左右をautoで中央寄せ */
+    margin-bottom: 40px; /* 下部にも余白を設けておくと、コンテンツが下にはみ出た場合に良い */
+
+    padding: 40px; /* 要素の内部パディング */
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明の白 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    /* ★追加: login-form__content の子要素を水平方向中央に寄せる★ */
     display: flex;
     flex-direction: column;
+    align-items: center; /* これを追加 */
+    gap: 30px; /* 子要素間の縦方向のスペース */
+}
+
+/* ★login-form__heading の修正★ */
+.login-form__heading {
+    height: 132px; /* 固定高さを設定している場合、コンテンツの高さによっては中央寄せが難しくなることも */
+    display: flex;
+    flex-direction: column;
+    /* ★追加: login-form__heading の子要素（タイトル1,2）を水平方向中央に寄せる★ */
+    align-items: center; /* これを追加 */
     gap: 10px;
 }
 
+/* その他のスタイルはそのまま */
 .login-form_title1 {
     color: rgba(236, 135, 239, 1);
     font-family: Lora;
@@ -40,6 +55,7 @@ body {
     font-size: 60px;
     line-height: 100%;
     letter-spacing: 10%;
+    /* text-align: center; を追加しても良いですが、Flexboxのalign-itemsで制御できます */
 }
 
 .login-form_title2 {
@@ -48,4 +64,5 @@ body {
     font-size: 30px;
     line-height: 100%;
     letter-spacing: 10%;
+    /* text-align: center; を追加しても良いですが、Flexboxのalign-itemsで制御できます */
 }
