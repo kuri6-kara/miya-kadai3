@@ -33,12 +33,12 @@ class AdminController extends Controller
         if ($latest_weight_log) {
             $current_weight = $latest_weight_log->weight; // 最新の体重を設定
 
-                if ($weight_targets && $weight_targets->target_weight !== null) {
+            if ($weight_targets && $weight_targets->target_weight !== null) {
                 // 目標体重 - 現在の体重 で差異を計算
                 // マイナスの値は「目標まであと〇kg」
                 // プラスの値は「目標を超過〇kg」
                 $weight_difference = $current_weight - $weight_targets->target_weight;
-        dump($weight_difference);
+                dump($weight_difference);
             }
         }
 
@@ -94,7 +94,6 @@ class AdminController extends Controller
     {
         // dd('AdminController show method reached with ID: ' . $weight_log);
         // $weight_log = Weight_log::find($weight_logId);
-
         return view('show', compact('weight_log'));
     }
 
@@ -106,6 +105,7 @@ class AdminController extends Controller
         $data = $request->only(['date', 'weight', 'calories', 'exercise_time', 'exercise_content']);
         // $weight_log = Weight_log::find($weight_log);
         $weight_log->update($data);
+        // dd('update');
         return redirect('/weight_logs');
     }
 

@@ -30,9 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/register/step2', [RegisterController::class, 'create']);
     Route::post('/register/step2', [RegisterController::class, 'store']);
 
-    Route::get('/weight_logs/{weight_Log}', [AdminController::class, 'show']);
-    Route::patch('/weight_logs/{weight_Log}/update', [AdminController::class, 'update']);
-    Route::delete('/weight_logs/{weight_Log}/delete', [AdminController::class, 'destroy']);
+    Route::get('/weight_logs/{weight_log}', [AdminController::class, 'show']);
+    Route::patch('/weight_logs/{weight_log}/update', [AdminController::class, 'update']);
+    Route::delete('/weight_logs/{weight_log}/delete', [AdminController::class, 'destroy']);
 
     Route::get('/weight_logs/goal_setting/index', [GoalController::class, 'index']);
     // ★ここを修正します！ GoalController の update ルートのURIを変更します。★

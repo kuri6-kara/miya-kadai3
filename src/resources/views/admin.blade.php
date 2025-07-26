@@ -46,7 +46,7 @@
 
     <div class="form1">
 
-        <form action="/weight_logs/search" method="GET" class="search-form">
+        <form action="/weight_logs/search" method="GET" class="search-form" novalidate>
 
             @csrf
 
@@ -102,7 +102,7 @@
 
                     <div class="modal_content">
 
-                        <form action="/weight_logs/create" method="POST">
+                        <form action="/weight_logs/create" method="POST" novalidate>
 
                             @csrf
 

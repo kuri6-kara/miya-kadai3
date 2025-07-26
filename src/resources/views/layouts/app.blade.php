@@ -25,7 +25,7 @@
             </li>
             <li class="logout__button">
                 @if (Auth::check())
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" novalidate>
                     @csrf
                     <button type="submit">
                         <img src="{{ asset('img/Group(4).png') }}">
