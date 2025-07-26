@@ -1,5 +1,5 @@
 body {
-    background-image: url('../img/background.jpg');
+    background-image: url("../img/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,39 +15,34 @@ body {
     align-items: center;
 }
 
-/* ★login-form__content の修正★ */
 .login-form__content {
     max-width: calc(100% - 240px); /* 左右120pxずつなので、合計240pxを引く */
     width: 660px; /* 基本の幅として660pxを設定（max-widthを超えない範囲で） */
 
-    margin-top: 40px; /* 上部に40pxの余白 */
-    margin-left: auto; /* 左右をautoで中央寄せ */
-    margin-right: auto; /* 左右をautoで中央寄せ */
-    margin-bottom: 40px; /* 下部にも余白を設けておくと、コンテンツが下にはみ出た場合に良い */
+    /* ★修正点: margin: 40px; を margin: 40px auto; に変更★ */
+    margin: auto; /* 上下40px、左右はautoで中央寄せ */
 
-    padding: 40px; /* 要素の内部パディング */
+    padding: 40px;
     border-radius: 24px;
     background-color: rgba(255, 255, 255, 0.8); /* 半透明の白 */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-    /* ★追加: login-form__content の子要素を水平方向中央に寄せる★ */
     display: flex;
     flex-direction: column;
-    align-items: center; /* これを追加 */
-    gap: 30px; /* 子要素間の縦方向のスペース */
+    align-items: center; /* login-form__content の子要素を水平方向中央に寄せる */
+    gap: 30px; /* login-form__heading, login-form__inner, register__link の間の縦方向のスペース */
 }
 
-/* ★login-form__heading の修正★ */
+/* login-form__heading のスタイル */
 .login-form__heading {
-    height: 132px; /* 固定高さを設定している場合、コンテンツの高さによっては中央寄せが難しくなることも */
+    height: 132px;
     display: flex;
     flex-direction: column;
-    /* ★追加: login-form__heading の子要素（タイトル1,2）を水平方向中央に寄せる★ */
-    align-items: center; /* これを追加 */
+    align-items: center; /* login-form__heading の子要素（タイトル1,2）を水平方向中央に寄せる */
     gap: 10px;
 }
 
-/* その他のスタイルはそのまま */
+/* login-form_title1 のスタイル */
 .login-form_title1 {
     color: rgba(236, 135, 239, 1);
     font-family: Lora;
@@ -55,14 +50,92 @@ body {
     font-size: 60px;
     line-height: 100%;
     letter-spacing: 10%;
-    /* text-align: center; を追加しても良いですが、Flexboxのalign-itemsで制御できます */
 }
 
+/* login-form_title2 のスタイル */
 .login-form_title2 {
     font-family: Hiragino Mincho Pro;
     font-weight: 300;
     font-size: 30px;
     line-height: 100%;
     letter-spacing: 10%;
-    /* text-align: center; を追加しても良いですが、Flexboxのalign-itemsで制御できます */
 }
+
+/* ★ここから追加するスタイル（入力欄のレイアウト調整）★ */
+
+/* フォーム全体（.login-form__form）の幅を調整 */
+.login-form__form {
+    width: 100%; /* .login-form__content の幅いっぱいに広げる */
+    display: flex; /* フォーム内の要素をFlexboxで制御 */
+    flex-direction: column; /* 子要素を縦に並べる */
+    gap: 20px; /* 各グループ間のスペース */
+    align-items: center;
+}
+
+/* 各入力グループ（メールアドレス、パスワード）のスタイル */
+.login-form__group {
+    display: flex; /* Flexboxを適用 */
+    flex-direction: column; /* 子要素を縦方向に並べる */
+    width: 500px; /* ご希望の幅 */
+    gap: 10px; /* 子要素（ラベルと入力欄）間のスペース */
+}
+
+/* ラベルのスタイル */
+.login-form__label {
+    font-size: 16px; /* ラベルのフォントサイズ */
+    margin-bottom: 5px; /* ラベルと入力欄の間にスペース */
+    color: #333; /* ラベルの色 */
+    font-weight: bold; /* ラベルを太字に */
+}
+
+/* 入力欄のスタイル */
+.login-form__input {
+    width: 100%; /* 親要素（.login-form__group）の幅いっぱいに広げる */
+    padding: 10px; /* 入力欄の内側の余白 */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 4px; /* 角を丸く */
+    font-size: 16px; /* フォントサイズ */
+}
+
+/* エラーメッセージのスタイル */
+.register-form__error-message,
+.form__error {
+    /* 両方のエラーメッセージクラスを対象 */
+    color: red; /* エラーメッセージの色 */
+    font-size: 14px; /* フォントサイズ */
+    margin-top: 5px; /* 入力欄との間にスペース */
+    width: 100%; /* 幅を確保 */
+    text-align: left; /* テキストを左寄せに */
+}
+
+/* ログインボタンのスタイル */
+.login-form__btn {
+    /* width: 100%; フォームの幅いっぱいに広げる */
+    width: 250px;
+    border-radius: 12px;
+    gap: 10px;
+    padding: 10px;
+    background: linear-gradient(90deg, #a3a6e1 0%, #ffabd9 100%);
+
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* アカウント作成リンクのスタイル */
+.register__link {
+    margin-top: 20px; /* ボタンとの間にスペース */
+    border-bottom: 1px solid rgba(44, 153, 255, 1);
+    border: none;
+    font-family: Hiragino Mincho Pro;
+    font-weight: 300;
+    font-style: W3;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+
