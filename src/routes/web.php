@@ -23,22 +23,21 @@ use App\Http\Controllers\AuthController;
 // });
 
 Route::middleware('auth')->group(function () {
+    // AdminControllerの基本ルート
     Route::get('/weight_logs', [AdminController::class, 'index']);
     Route::get('/weight_logs/search', [AdminController::class, 'search']);
     Route::post('/weight_logs/create', [AdminController::class, 'store']);
 
+    // 登録関連ルート
     Route::get('/register/step2', [RegisterController::class, 'create']);
     Route::post('/register/step2', [RegisterController::class, 'store']);
 
+    // ★重要: GoalControllerのルートを、AdminControllerのワイルドカードルートより先に記述する★
+    Route::get('/weight_logs/goal_setting/index', [GoalController::class, 'index']);
+    Route::patch('/weight_logs/goal_setting/update', [GoalController::class, 'update']); // ★このPATCHルートを上に移動★
+
+    // AdminControllerの動的ルート（{weight_log} はそのまま）
     Route::get('/weight_logs/{weight_log}', [AdminController::class, 'show']);
     Route::patch('/weight_logs/{weight_log}/update', [AdminController::class, 'update']);
     Route::delete('/weight_logs/{weight_log}/delete', [AdminController::class, 'destroy']);
-
-    Route::get('/weight_logs/goal_setting/index', [GoalController::class, 'index']);
-    // ★ここを修正します！ GoalController の update ルートのURIを変更します。★
-    // 例: 目標体重はユーザーごとに1つなので、IDは不要かもしれません。
-    // または、goal_setting の下に update を置く。
-    Route::patch('/weight_logs/goal_setting/update', [GoalController::class, 'update']);
-    // もし GoalController の update が特定の目標IDを更新するなら、以下のようにすることも可能です。
-    // Route::patch('/weight_targets/{targetId}', [GoalController::class, 'update']);
 });
