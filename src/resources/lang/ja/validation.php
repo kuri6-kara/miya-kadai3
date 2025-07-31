@@ -133,8 +133,28 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください', // ここを明示的に定義
+            'required' => 'メールアドレスを入力してください',
+        ],
+        // RegisterRequest.phpのmessages()で定義したメッセージは、通常はこちらに記述する必要はありませんが、
+        // 念のため、FormRequestのmessages()が効かない場合の最終手段としてここに記述することも可能です。
+        // ただし、FormRequestのmessages()が優先されるべきです。
+        'name' => [
+            'required' => 'お名前を入力してください',
+        ],
+        'password' => [
+            'required' => 'パスワードを入力してください',
+        ],
+        'weight' => [
+            'required' => '現在の体重を入力してください',
+            'digits_between' => '４桁までの数字で入力してください', // digits_betweenルールに対するメッセージ
+            'regex' => '小数点は１桁で入力してください',
+        ],
+        'target_weight' => [
+            'required' => '目標の体重を入力してください',
+            'digits_between' => '４桁までの数字で入力してください', // digits_betweenルールに対するメッセージ
+            'regex' => '小数点は１桁で入力してください',
         ],
     ],
 

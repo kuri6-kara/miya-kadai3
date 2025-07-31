@@ -18,9 +18,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/weight_logs', [AuthController::class, 'index']);
-// });
+
 
 Route::middleware('auth')->group(function () {
     // AdminControllerの基本ルート
