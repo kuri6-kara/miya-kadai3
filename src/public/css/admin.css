@@ -39,7 +39,7 @@
 
 .search-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .search-start__date {
@@ -128,8 +128,7 @@
 }
 
 .admin__label {
-    background-color: #8b7969;
-    color: #fff;
+    color: rgba(51, 51, 51, 1);
     text-align: left;
     font-weight: 400;
 }

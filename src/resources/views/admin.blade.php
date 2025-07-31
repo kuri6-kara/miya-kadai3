@@ -9,8 +9,12 @@
 <div class="upper_part">
     <div class="weight-summary">
         <span>
-            目標体重:
-            {{ $weight_targets->target_weight ?? '未設定' }}kg
+            <div class="weight-summary__title">
+                目標体重
+            </div>
+            <div class="weight-summary__content">
+                {{ $weight_targets->target_weight ?? '未設定' }}kg
+            </div>
         </span>
 
         <span class="separator">｜</span>
@@ -63,20 +67,7 @@
             </div>
         </form>
 
-        {{-- 検索結果の表示（件数と条件） --}}
-        @if (isset($search_performed) && $search_performed)
-        <div class="search-results-summary">
-            @if ($start_date && $end_date)
-            <p>{{ $start_date }} 〜 {{ $end_date }} の検索結果 {{ $search_count }}件</p>
-            @elseif ($start_date)
-            <p>{{ $start_date }} 以降の検索結果 {{ $search_count }}件</p>
-            @elseif ($end_date)
-            <p>{{ $end_date }} までの検索結果 {{ $search_count }}件</p>
-            @else
-            <p>全期間の検索結果 {{ $search_count }}件</p>
-            @endif
-        </div>
-        @endif
+
 
         <div class="create-form__button">
             <label class="btn-submit" for="modal-toggle">データを追加</label>
@@ -171,6 +162,21 @@
             </div>
         </div>
     </div>
+
+    {{-- 検索結果の表示（件数と条件） --}}
+    @if (isset($search_performed) && $search_performed)
+    <div class="search-results-summary">
+        @if ($start_date && $end_date)
+        <p>{{ $start_date }} 〜 {{ $end_date }} の検索結果 {{ $search_count }}件</p>
+        @elseif ($start_date)
+        <p>{{ $start_date }} 以降の検索結果 {{ $search_count }}件</p>
+        @elseif ($end_date)
+        <p>{{ $end_date }} までの検索結果 {{ $search_count }}件</p>
+        @else
+        <p>全期間の検索結果 {{ $search_count }}件</p>
+        @endif
+    </div>
+    @endif
 
     <div class="form2">
         <table class="form-content">
