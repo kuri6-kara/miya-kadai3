@@ -14,49 +14,40 @@
     <main>
         <div class="register-form__content">
             <div class="register-form__heading">
-                <h1>PiGLy</h1>
-                <h2>新規会員登録</h2>
-                <h3>STEP2 体重データの入力</h3>
+                <div class="register-form_title1">PiGLy</div>
+                <div class="register-form_title2">新規会員登録</div>
             </div>
-            <form class="form" action="/register/step2" method="post" novalidate>
-                @csrf
-                <div class="form__group">
-                    <div class="form__group-title">
-                        <span class="form__label--item">現在の体重</span>
-                    </div>
-                    <div class="form__group-content">
-                        <div class="form__input--number">
-                            <input type="number" name="weight" value="{{ old('weight') }}" />
+            <div class="register-form_title3">STEP2 体重データの入力</div>
+            <div class="register-form__inner">
+                <form class="register-form__form" action="/register/step2" method="post" novalidate>
+                    @csrf
+                    <div class="register-form__group">
+                        <span class="register-form__label">現在の体重</span>
+                        <div class="input-with-unit">
+                            <input class="form__input--number" type="number" name="weight" value="{{ old('weight') }}" />
+                            <span class="unit">kg</span>
                         </div>
-                        <p>kg</p>
-                        <div class="form__error">
+                        <div class="register-form__error-message">
                             @error('weight')
                             {{ $message }}
                             @enderror
                         </div>
                     </div>
-                </div>
-                <div class="form__group">
-                    <div class="form__group-title">
-                        <span class="form__label--item">目標の体重</span>
-                    </div>
-                    <div class="form__group-content">
-                        <div class="form__input--number">
-                            <input type="number" name="target_weight" value="{{ old('target_weight') }}" />
+                    <div class="register-form__group">
+                        <span class="register-form__label">目標の体重</span>
+                        <div class="input-with-unit">
+                            <input class="form__input--number" type="number" name="target_weight" value="{{ old('target_weight') }}" />
+                            <span class="unit">kg</span>
                         </div>
-                        <p>kg</p>
-                        <div class="form__error">
+                        <div class="register-form__error-message">
                             @error('target_weight')
                             {{ $message }}
                             @enderror
                         </div>
                     </div>
-                </div>
-
-                <div class="form__button">
-                    <button class="form__button-submit" type="submit">アカウント作成</button>
-                </div>
-            </form>
+                    <button class="register-form__btn" type="submit">アカウント作成</button>
+                </form>
+            </div>
         </div>
     </main>
 </body>
