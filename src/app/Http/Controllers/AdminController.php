@@ -38,33 +38,94 @@ class AdminController extends Controller
                 // マイナスの値は「目標まであと〇kg」
                 // プラスの値は「目標を超過〇kg」
                 $weight_difference = $current_weight - $weight_targets->target_weight;
-                dump($weight_difference);
+                // dump($weight_difference);
             }
         }
 
         // 体重ログをページネート
         $weight_logs = Weight_log::where('user_id', auth()->id())->Paginate(9); // ユーザーのログのみ表示するよう変更
 
-        return view('admin', compact('weight_targets', 'weight_logs', 'latest_weight_log', 'current_weight', 'weight_difference'));
+        // indexページでは検索は行われていないので、関連変数をnullまたはfalseで初期化
+        $search_performed = false;
+        $search_count = null;
+        $start_date = null;
+        $end_date = null;
+
+        return view(
+            'admin',
+            compact(
+                'weight_targets',
+                'weight_logs',
+                'latest_weight_log',
+                'current_weight',
+                'weight_difference',
+                'search_performed', // 検索が行われたかどうかのフラグ
+                'search_count',     // 検索結果件数
+                'start_date',       // 検索開始日
+                'end_date'          // 検索終了日
+            )
+        );
     }
 
 
     public function search(Request $request)
     {
-        $query = Weight_log::query();
+        // リセットボタンが押された場合、管理画面の初期状態に戻す
+        if ($request->has('reset')) {
+            return redirect('/weight_logs');
+        }
+
+        // 検索クエリの構築
+        $query = Weight_log::where('user_id', auth()->id()); // ログインユーザーのログのみ対象
+
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
 
         if ($request->filled('start_date')) {
-            $startDate = Carbon::parse($request->input('start_date'));
+            $startDate = Carbon::parse($start_date);
             $query->where('date', '>=', $startDate);
         }
 
         if ($request->filled('end_date')) {
-            $endDate = Carbon::parse($request->input('end_date'));
-            $query->where('date', '<=', $endDate->endOfDay());
+            $endDate = Carbon::parse($end_date);
+            $query->where('date', '<=', $endDate->endOfDay()); // 終了日の終わりまでを含む
         }
 
+        // 検索結果を取得
         $weight_logs = $query->Paginate(9);
-        return view('admin', compact('weight_logs'));
+        $search_count = $weight_logs->total(); // 検索結果の総件数
+
+        // indexメソッドと同様に、ヘッダー表示に必要な変数を取得・計算
+        $weight_targets = Weight_target::where('user_id', auth()->id())->first();
+        $latest_weight_log = Weight_log::where('user_id', auth()->id())
+            ->orderBy('date', 'desc')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $current_weight = null;
+        $weight_difference = null;
+
+        if ($latest_weight_log) {
+            $current_weight = $latest_weight_log->weight;
+            if ($weight_targets && $weight_targets->target_weight !== null) {
+                $weight_difference = $current_weight - $weight_targets->target_weight;
+            }
+        }
+
+        // 検索が行われたことを示すフラグ
+        $search_performed = true;
+
+        return view('admin', compact(
+            'weight_targets',
+            'weight_logs',
+            'latest_weight_log',
+            'current_weight',
+            'weight_difference',
+            'search_performed', // 検索が行われたことを示す
+            'search_count',     // 検索結果件数
+            'start_date',       // 検索開始日 (フォームに再表示するため)
+            'end_date'          // 検索終了日 (フォームに再表示するため)
+        ));
     }
 
     public function store(Weight_logRequest $request)
