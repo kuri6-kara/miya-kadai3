@@ -23,7 +23,7 @@
                     <div class="login-form__group">
                         <span class="login-form__label">メールアドレス</span>
                         <input class="login-form__input" type="email" name="email" value="{{ old('email') }}" />
-                        <div class="register-form__error-message">
+                        <div class="login-form__error-message">
                             @error('email')
                             {{ $message }}
                             @enderror
@@ -32,7 +32,7 @@
                     <div class="login-form__group">
                         <span class="login-form__label">パスワード</span>
                         <input class="login-form__input" type="password" name="password" />
-                        <div class="form__error">
+                        <div class="login-form__error-message">
                             @error('password')
                             {{ $message }}
                             @enderror

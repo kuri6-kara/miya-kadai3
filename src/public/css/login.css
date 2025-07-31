@@ -97,9 +97,7 @@ body {
 }
 
 /* エラーメッセージのスタイル */
-.register-form__error-message,
-.form__error {
-    /* 両方のエラーメッセージクラスを対象 */
+.login-form__error-message {
     color: red; /* エラーメッセージの色 */
     font-size: 14px; /* フォントサイズ */
     margin-top: 5px; /* 入力欄との間にスペース */
