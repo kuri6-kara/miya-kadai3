@@ -1,4 +1,12 @@
+/* body要素にページ全体の背景色を設定 */
+body {
+    background-color: rgba(249, 249, 249, 1);
+    margin: 0; /* bodyのデフォルトマージンをリセット */
+    padding: 0; /* bodyのデフォルトパディングをリセット */
+}
+
 .admin {
+    /* adminクラスはコンテンツの配置と余白の調整に専念 */
     margin-right: 196px;
     margin-left: 196px;
     margin-top: 70px;
@@ -6,6 +14,15 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    /* background-color: rgba(249, 249, 249, 1); */ /* この行は削除またはコメントアウト */
+}
+
+.upper_part {
+    /* upper_partの背景色を設定 */
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px; /* 内容との間に余白を追加 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影を追加 */
 }
 
 .weight-summary {
@@ -17,9 +34,7 @@
     font-size: 1.1em; /* 文字サイズを少し大きく */
     padding: 10px 0; /* 上下のパディング */
     margin-bottom: 20px; /* 下の要素との間隔 */
-    background-color: #f9f9f9; /* 背景色 */
-    border-radius: 8px; /* 角を丸く */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影 */
+    /* background-color: #f9f9f9; */ /* この行は削除またはコメントアウト（upper_partが白になるため） */
 }
 
 .weight-summary span {
@@ -102,20 +117,31 @@
     background-color: #d9c6b5;
 }
 
-.admin__table {
+/* ここからテーブルのボーダーに関する修正 */
+.form-content { /* HTMLの<table>タグに付与されているクラス */
+    width: 100%;
+    border-collapse: collapse; /* セルのボーダーを結合し、外枠の線をなくす */
+    border: none; /* テーブル自体のボーダーを完全に削除 */
+}
+
+.admin__row { /* 各行の下線のみを設定 */
+    border-bottom: 1px solid #e0dfde; /* 各行の下に線を追加 */
+}
+
+.admin__label, /* 各ヘッダーセルとデータセルからボーダーを削除 */
+.admin__data {
+    padding: 16px 8px;
+    border: none; /* セル自体のボーダーを完全に削除 */
+}
+/* ここまでテーブルのボーダーに関する修正 */
+
+
+.admin__table { /* このクラスは現在のHTMLでは使用されていないようですが、念のため残します */
     margin-top: 16px;
     width: 100%;
     border-collapse: collapse;
 }
 
-.admin__row {
-    border: 1px solid #e0dfde;
-}
-
-.admin__label,
-.admin__data {
-    padding: 16px 8px;
-}
 
 .admin__label:first-of-type,
 .admin__data:first-of-type {
@@ -232,4 +258,12 @@
     cursor: pointer;
     transition: opacity 0.2s;
     text-decoration: none;
+}
+
+.content {
+    /* contentの背景色を設定 */
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px; /* 内容との間に余白を追加 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影を追加 */
 }
