@@ -6,7 +6,6 @@ body {
 }
 
 .admin {
-    /* adminクラスはコンテンツの配置と余白の調整に専念 */
     margin-right: 196px;
     margin-left: 196px;
     margin-top: 70px;
@@ -14,36 +13,58 @@ body {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    /* background-color: rgba(249, 249, 249, 1); */ /* この行は削除またはコメントアウト */
 }
 
 .upper_part {
-    /* upper_partの背景色を設定 */
     background-color: rgba(255, 255, 255, 1);
-    padding: 20px; /* 内容との間に余白を追加 */
-    border-radius: 8px; /* 角を丸く */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影を追加 */
+    padding: 30px 40px; /* 上下のパディングを増やし、左右のパディングも調整 */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex; /* Flexboxを適用 */
+    justify-content: center; /* 要素を中央に配置 */
+    align-items: center; /* 垂直方向の中央揃え */
+    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
 }
 
 .weight-summary {
-    display: flex; /* 要素を横並びにする */
+    display: flex;
     align-items: center; /* 垂直方向の中央揃え */
-    justify-content: center; /* 水平方向の中央揃え */
-    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
-    gap: 15px; /* 各要素間のスペース */
-    font-size: 1.1em; /* 文字サイズを少し大きく */
-    padding: 10px 0; /* 上下のパディング */
-    margin-bottom: 20px; /* 下の要素との間隔 */
-    /* background-color: #f9f9f9; */ /* この行は削除またはコメントアウト（upper_partが白になるため） */
+    gap: 92.5px; /* 各要素間のギャップを92.5pxに設定 */
+    font-size: 1.1em;
+    padding: 0;
+    margin: 0;
 }
 
 .weight-summary span {
-    white-space: nowrap; /* テキストの折り返しを防ぐ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.weight-summary__title {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.weight-summary__content {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.weight-summary__content span {
+    color: #333 !important;
+    font-size: 1em;
+    font-weight: 700;
 }
 
 .weight-summary .separator {
-    color: #ccc; /* 区切り文字の色 */
-    margin: 0 5px; /* 区切り文字の左右のスペース */
+    color: #e0dfde;
+    font-size: 2.5em;
+    font-weight: 100;
 }
 
 
@@ -261,9 +282,70 @@ body {
 }
 
 .content {
-    /* contentの背景色を設定 */
     background-color: rgba(255, 255, 255, 1);
-    padding: 20px; /* 内容との間に余白を追加 */
-    border-radius: 8px; /* 角を丸く */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影を追加 */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ページネーションのスタイル */
+.pagination-content {
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center;
+    margin-top: 20px; /* テーブルとの間に余白 */
+}
+
+.pagination-content .pagination { /* semantic-uiのpaginationクラス */
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px; /* ここで各ページネーションアイテム間のスペースを10pxに設定 */
+}
+
+.pagination-content .pagination li {
+    /* margin: 0 10px; */ /* gapで制御するため削除 */
+}
+
+.pagination-content .pagination li a,
+.pagination-content .pagination li span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px; /* ボタンの幅 */
+    height: 35px; /* ボタンの高さ */
+    flex-shrink: 0; /* アイテムが縮まないようにする */
+    border-radius: 50%; /* 丸い形にする */
+    text-decoration: none;
+    color: #333;
+    background-color: #f0f0f0; /* デフォルトの背景色 */
+    border: 1px solid #e0dfde;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.pagination-content .pagination li a:hover {
+    background-color: #e0e0e0; /* ホバー時の背景色 */
+}
+
+.pagination-content .pagination li.active a,
+.pagination-content .pagination li.active span {
+    background-color: #a18cd1; /* アクティブなページの背景色 */
+    color: white; /* アクティブなページの文字色 */
+    border-color: #a18cd1;
+}
+
+.pagination-content .pagination li.disabled span {
+    opacity: 0.5; /* 無効な矢印の透明度 */
+    cursor: not-allowed;
+}
+
+/* 矢印のスタイル調整 */
+/* semantic-ui.blade.phpで直接「<」と「>」の文字を使用するため、SVG関連のスタイルは不要になる可能性があります */
+.pagination-content .pagination li.disabled span svg,
+.pagination-content .pagination li a svg {
+    width: 1em; /* SVGアイコンのサイズ調整 */
+    height: 1em;
+    vertical-align: middle;
 }
