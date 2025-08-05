@@ -20,25 +20,33 @@
         <span class="separator">｜</span>
 
         <span>
-            目標まで:
-            @if ($weight_difference !== null)
-            @if ($weight_difference > 0)
-            <span style="color: red;">+{{ $weight_difference }}kg</span>
-            @elseif ($weight_difference < 0)
-                <span style="color: green;">-{{ abs($weight_difference) }}kg</span>
-        @else
-        0kg
-        @endif
-        @else
-        計算不可
-        @endif
+            <div class="weight-summary__title">
+                目標まで
+            </div>
+            <div class="weight-summary__content">
+                @if ($weight_difference !== null)
+                @if ($weight_difference > 0)
+                +{{ $weight_difference }}kg
+                @elseif ($weight_difference < 0)
+                    -{{ abs($weight_difference) }}kg
+                    @else
+                    0kg
+                    @endif
+                    @else
+                    計算不可
+                    @endif
+                    </div>
         </span>
 
         <span class="separator">｜</span>
 
         <span>
-            最新体重:
-            {{ $current_weight ?? '未登録' }}kg
+            <div class="weight-summary__title">
+                最新体重
+            </div>
+            <div class="weight-summary__content">
+                {{ $current_weight ?? '未登録' }}kg
+            </div>
         </span>
     </div>
 </div>
