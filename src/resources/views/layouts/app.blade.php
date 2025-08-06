@@ -14,7 +14,7 @@
 <body>
     <div class="header">
         <div class="header__left">
-            PiGLy
+            <div class="header__title">PiGLy</div>
         </div>
         <div class="header__right">
             <li class="goal-form__button">

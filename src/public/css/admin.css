@@ -15,32 +15,26 @@ body {
     gap: 30px;
 }
 
-.upper_part {
+.weight-summary {
+    display: flex;
+    align-items: center; /* 垂直方向の中央揃え */
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.1em;
+    padding: 0;
+    margin: 0;
     background-color: rgba(255, 255, 255, 1);
     padding: 30px 40px; /* 上下のパディングを増やし、左右のパディングも調整 */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex; /* Flexboxを適用 */
-    justify-content: center; /* 要素を中央に配置 */
-    align-items: center; /* 垂直方向の中央揃え */
-    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
 }
 
-.weight-summary {
-    display: flex;
-    align-items: center; /* 垂直方向の中央揃え */
-    gap: 92.5px; /* 各要素間のギャップを92.5pxに設定 */
-    font-size: 1.1em;
-    padding: 0;
-    margin: 0;
-}
-
-.weight-summary span {
+/* .weight-summary span {
     display: flex;
     flex-direction: column;
     align-items: center;
     white-space: nowrap;
-}
+} */
 
 .weight-summary__title {
     font-size: 1.1em;
@@ -49,6 +43,7 @@ body {
 }
 
 .weight-summary__content {
+    white-space: nowrap;
     font-size: 2.5em;
     font-weight: 700;
     color: #333;

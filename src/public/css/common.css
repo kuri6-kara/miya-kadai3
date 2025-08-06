@@ -1,5 +1,6 @@
 .header {
-    height: 71px;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(205, 205, 205, 1); /* Existing border remains */
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
@@ -10,6 +11,8 @@
 }
 
 .header__left {
+    display: flex;
+    align-items: center;
     color: rgba(236, 135, 239, 1);
     font-family: Lora;
     font-weight: 400;
@@ -19,11 +22,11 @@
 }
 
 .header__right {
-    height: 44px;
     display: flex;
     margin-top: 13.5px;
     margin-bottom: 13.5px;
     gap: 20px;
+    align-items: center; /* ボタンが垂直方向で中央に揃うように追加 */
 }
 
 .goal-form__button {
@@ -31,6 +34,8 @@
     padding: 10px;
     list-style: none;
     border-radius: 5px;
+    /* 周囲の枠線を追加 */
+    border: 1px solid rgba(205, 205, 205, 1);
 }
 
 .logout__button {
@@ -38,4 +43,26 @@
     list-style: none;
     padding: 10px;
     border-radius: 5px;
+    /* 周囲の枠線を追加 */
+    border: 1px solid rgba(205, 205, 205, 1);
+}
+
+/* ボタン要素自体のスタイルも調整 */
+.goal-form__button button,
+.logout__button button {
+    background: none; /* 親要素の背景色を使うため、ボタン自身の背景はなし */
+    border: none; /* ボタン自身のボーダーはなし */
+    padding: 0; /* 親要素のパディングを使うため、ボタン自身のパディングはなし */
+    cursor: pointer;
+    display: flex; /* アイコンとテキストを横並びにするため */
+    align-items: center; /* 垂直方向の中央揃え */
+    gap: 5px; /* アイコンとテキストの間のスペース */
+    color: inherit; /* 親要素の文字色を継承 */
+    font-size: inherit; /* 親要素のフォントサイズを継承 */
+}
+
+.goal-form__button button img,
+.logout__button button img {
+    height: 20px; /* アイコンのサイズを調整 */
+    width: auto;
 }
