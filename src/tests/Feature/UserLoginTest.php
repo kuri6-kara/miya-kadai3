@@ -13,10 +13,13 @@ class UserLoginTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_login()
     {
-        $response = $this->get('/');
+$user = User::factory()->create(['email' => 'test @example . com', 'password' => bcrypt('test1024'), ]);
 
-        $response->assertStatus(200);
+        $response = $this->post('/login', ['email' => 'test @example . com', 'password' => 'test1024']);
+
+        $response->assertRedirect('/weight_logs');
+        $this->assertAuthenticatedAs($user);
     }
 }
