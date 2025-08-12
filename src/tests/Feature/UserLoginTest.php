@@ -15,7 +15,7 @@ class UserLoginTest extends TestCase
      */
     public function test_login()
     {
-$user = User::factory()->create(['email' => 'test @example . com', 'password' => bcrypt('test1024'), ]);
+        $user = User::factory()->create(['email' => 'test @example . com', 'password' => bcrypt('test1024'),]);
 
         $response = $this->post('/login', ['email' => 'test @example . com', 'password' => 'test1024']);
 
