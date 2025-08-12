@@ -35,7 +35,7 @@ class Weight_logRequest extends FormRequest
     public function messages()
     {
         return [
-            'date.required' => '日付をしてください',
+            'date.required' => '日付を入力してください',
             'weight.required' => '体重を入力してください',
             
             
