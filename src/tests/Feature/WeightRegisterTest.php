@@ -18,7 +18,7 @@ class WeightRegisterTest extends TestCase
     {
         $user = User::factory()->create();
         $this->actingAs($user)
-            ->post('/weight-logs', [
+            ->post('/weight-logs/create', [
                 'date' => '2023-10-27',
                 'weight' => 75.5,
                 'calories' => 1300,
@@ -35,6 +35,11 @@ class WeightRegisterTest extends TestCase
             'exercise_content' => '縄跳び',
         ]);
 
+        $response->assertRedirect('/weight_logs');
+    }
+
+    public function test_example()
+    {
         $response = $this->get('/weight_logs');
 
         $response->assertStatus(200);
