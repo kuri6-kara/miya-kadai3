@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class WeightRegisterTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -16,7 +17,23 @@ class WeightRegisterTest extends TestCase
     public function test_example()
     {
         $user = User::factory()->create();
-        $this->actingAs($user);
+        $this->actingAs($user)
+            ->post('/weight-logs', [
+                'date' => '2023-10-27',
+                'weight' => 75.5,
+                'calories' => 1300,
+                'exercise_time' => 10,
+                'exercise_content' => '縄跳び',
+            ]);;
+
+        $this->assertDatabaseHas('weight_logs', [
+            'user_id' => $user->id,
+            'date' => '2023-10-27',
+            'weight' => 75.5,
+            'calories' => 1300,
+            'exercise_time' => 10,
+            'exercise_content' => '縄跳び',
+        ]);
 
         $response = $this->get('/weight_logs');
 
