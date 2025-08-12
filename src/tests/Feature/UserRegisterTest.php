@@ -17,6 +17,16 @@ class UserRegisterTest extends TestCase
     {
         $response = $this->get('/register/step1');
 
-        $response->assertStatus('email');
+        $response->assertStatus(200);
+
+        $response->assertSee('お名前');
+
+        $response->assertSee('メールアドレス');
+
+        $response->assertSee('パスワード');
+
+        $response->assertSee('次に進む');
+
+        $response->assertSee('ログインはこちら');
     }
 }
