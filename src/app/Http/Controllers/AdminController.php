@@ -11,64 +11,64 @@ use Carbon\Carbon;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        $weight_targets = Weight_target::where('user_id', auth()->id())->first();
-        // ユーザーの最新の体重ログを取得
-        // 日付でソートして、最新のものを1件取得します
-        $latest_weight_log = Weight_log::where('user_id', auth()->id())
-            ->orderBy('date', 'desc') // 日付で降順ソート
-            ->orderBy('id', 'desc')   // 同じ日付の場合はIDで降順ソート (念のため)
-            ->first();
-        // dump($latest_weight_log);
-        // dump($weight_targets);
+    // public function index()
+    // {
+    //     $weight_targets = Weight_target::where('user_id', auth()->id())->first();
+    //     // ユーザーの最新の体重ログを取得
+    //     // 日付でソートして、最新のものを1件取得します
+    //     $latest_weight_log = Weight_log::where('user_id', auth()->id())
+    //         ->orderBy('date', 'desc') // 日付で降順ソート
+    //         ->orderBy('id', 'desc')   // 同じ日付の場合はIDで降順ソート (念のため)
+    //         ->first();
+    //     // dump($latest_weight_log);
+    //     // dump($weight_targets);
 
-        // 現在の体重と目標体重の差異を計算
-        // 空の箱を作成
-        // $current_weight と $weight_difference を必ず初期化する
-        $current_weight = null;
-        $weight_difference = null;
+    //     // 現在の体重と目標体重の差異を計算
+    //     // 空の箱を作成
+    //     // $current_weight と $weight_difference を必ず初期化する
+    //     $current_weight = null;
+    //     $weight_difference = null;
 
-        // 最新の体重ログが存在する場合のみ、現在の体重を設定し、差異を計算
-        if ($latest_weight_log) {
-            $current_weight = $latest_weight_log->weight; // 最新の体重を設定
+    //     // 最新の体重ログが存在する場合のみ、現在の体重を設定し、差異を計算
+    //     if ($latest_weight_log) {
+    //         $current_weight = $latest_weight_log->weight; // 最新の体重を設定
 
-            if ($weight_targets && $weight_targets->target_weight !== null) {
-                // 目標体重 - 現在の体重 で差異を計算
-                // マイナスの値は「目標まであと〇kg」
-                // プラスの値は「目標を超過〇kg」
-                $weight_difference = $current_weight - $weight_targets->target_weight;
-                // dump($weight_difference);
-            }
-        }
+    //         if ($weight_targets && $weight_targets->target_weight !== null) {
+    //             // 目標体重 - 現在の体重 で差異を計算
+    //             // マイナスの値は「目標まであと〇kg」
+    //             // プラスの値は「目標を超過〇kg」
+    //             $weight_difference = $weight_targets->target_weight - $current_weight;
+    //             // dump($weight_difference);
+    //         }
+    //     }
 
-        // 体重ログをページネート
-        $weight_logs = Weight_log::where('user_id', auth()->id())->Paginate(9); // ユーザーのログのみ表示するよう変更
+    //     // 体重ログをページネート
+    //     $weight_logs = Weight_log::where('user_id', auth()->id())->Paginate(9); // ユーザーのログのみ表示するよう変更
 
-        // indexページでは検索は行われていないので、関連変数をnullまたはfalseで初期化
-        $search_performed = false;
-        $search_count = null;
-        $start_date = null;
-        $end_date = null;
+    //     // indexページでは検索は行われていないので、関連変数をnullまたはfalseで初期化
+    //     $search_performed = false;
+    //     $search_count = null;
+    //     $start_date = null;
+    //     $end_date = null;
 
-        return view(
-            'admin',
-            compact(
-                'weight_targets',
-                'weight_logs',
-                'latest_weight_log',
-                'current_weight',
-                'weight_difference',
-                'search_performed', // 検索が行われたかどうかのフラグ
-                'search_count',     // 検索結果件数
-                'start_date',       // 検索開始日
-                'end_date'          // 検索終了日
-            )
-        );
-    }
+    //     return view(
+    //         'admin',
+    //         compact(
+    //             'weight_targets',
+    //             'weight_logs',
+    //             'latest_weight_log',
+    //             'current_weight',
+    //             'weight_difference',
+    //             'search_performed', // 検索が行われたかどうかのフラグ
+    //             'search_count',     // 検索結果件数
+    //             'start_date',       // 検索開始日
+    //             'end_date'          // 検索終了日
+    //         )
+    //     );
+    // }
 
 
-    public function search(Request $request)
+    public function index(Request $request)
     {
         // リセットボタンが押された場合、管理画面の初期状態に戻す
         if ($request->has('reset')) {
@@ -108,7 +108,7 @@ class AdminController extends Controller
         if ($latest_weight_log) {
             $current_weight = $latest_weight_log->weight;
             if ($weight_targets && $weight_targets->target_weight !== null) {
-                $weight_difference = $current_weight - $weight_targets->target_weight;
+                $weight_difference = $weight_targets->target_weight - $current_weight;
             }
         }
 

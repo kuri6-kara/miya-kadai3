@@ -28,9 +28,6 @@ class RegisterRequest extends FormRequest
             'weight' => ['required', 'digits_between:1,4', 'regex:/^\d{1,4}(\.\d{1})?$/'],
             'target_weight' => ['required', 'digits_between:1,4', 'regex:/^\d{1,4}(\.\d{1})?$/'],
             // 新規追加のルール
-            'name' => ['required'], // 名前の入力がない場合
-            'email' => ['required', 'email'], // メールアドレスの入力がない場合、メールアドレス形式ではない場合
-            'password' => ['required'], // パスワードの入力がない場合
         ];
     }
 
@@ -50,10 +47,6 @@ class RegisterRequest extends FormRequest
             'target_weight.max_digits' => '４桁までの数字で入力してください',
             'target_weight.regex' => '小数点は１桁で入力してください',
             // 新規追加のメッセージ
-            'name.required' => 'お名前を入力してください',
-            'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
-            'password.required' => 'パスワードを入力してください',
         ];
     }
 }

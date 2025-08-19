@@ -23,7 +23,7 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth')->group(function () {
     // AdminControllerの基本ルート
     Route::get('/weight_logs', [AdminController::class, 'index']);
-    Route::get('/weight_logs/search', [AdminController::class, 'search']);
+    // Route::get('/weight_logs/search', [AdminController::class, 'search']);
     Route::post('/weight_logs/create', [AdminController::class, 'store']);
 
     // 登録関連ルート

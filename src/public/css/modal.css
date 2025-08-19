@@ -1,0 +1,20 @@
+/* モーダルの背景 */
+.modal-background {
+  display: none;
+  position: fixed;
+  z-index: 1; /* 他の要素の上に表示 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* 背景透過 */
+}
+
+/* モーダル本体 */
+.modal-content {
+  margin: 15% auto; /* 中央に配置 */
+  width: 80%;
+  padding: 20px;
+  background-color: white;
+}

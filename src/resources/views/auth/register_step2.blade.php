@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    @php dump($errors->all()) @endphp
     <main>
         <div class="register-form__content">
             <div class="register-form__heading">
@@ -19,7 +20,7 @@
             </div>
             <div class="register-form_title3">STEP2 体重データの入力</div>
             <div class="register-form__inner">
-                <form class="register-form__form" action="/weight_logs" method="post" novalidate>
+                <form class="register-form__form" action="/register/step2" method="post" novalidate>
                     @csrf
                     <div class="register-form__group">
                         <span class="register-form__label">現在の体重</span>
