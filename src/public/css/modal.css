@@ -13,8 +13,120 @@
 
 /* モーダル本体 */
 .modal-content {
-  margin: 15% auto; /* 中央に配置 */
-  width: 80%;
+  margin: 70px 356px;
+  width: auto;
+  height: auto;
   padding: 20px;
   background-color: white;
+  border-radius: 8px; /* 角を丸くする */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
+}
+
+/* 閉じるボタン */
+.modal-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* モーダル内のフォームのスタイル調整 */
+.modal_form-item {
+  padding: 20px;
+}
+
+/* モーダルのタイトル */
+.modal_title {
+  font-family: Hiragino Kaku Gothic Pro;
+  font-weight: 600;
+  font-style: W6;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-bottom: 30px;
+}
+
+/* 各フォームセクションの間に上下の余白を設定 */
+.modal_content1,
+.modal_content2,
+.modal_content3,
+.modal_content4,
+.modal_content5 {
+    margin-bottom: 30px;
+}
+
+/* 最後のフォームセクションの下の余白は不要な場合が多いので調整 */
+.modal_content5 {
+    margin-bottom: 0;
+}
+
+/* フォームタイトルと入力フォームの間の余白 */
+.form-title {
+  font-weight: bold;
+  margin-bottom: 10px; /* タイトルと入力フォームの間の余白 */
+}
+
+.form-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 入力フォームの幅を修正 */
+.form-content input[type="number"],
+.form-content input[type="text"],
+.form-content input[type="date"],
+.form-content input[type="time"] {
+  /* ここでwidthを100%に設定 */
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-content p {
+  /* kg, calなどの単位の幅をautoに設定 */
+  width: auto;
+  flex-shrink: 0; /* 単位が縮まないようにする */
+  margin: 0;
+}
+
+.form__error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ボタンのスタイル */
+.return-form__button,
+.register-form__button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.return-form__button button,
+.register-form__button button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.return-form__button button {
+  background-color: #aaa;
+}
+
+.register-form__button button {
+  background-color: #a18cd1;
 }
