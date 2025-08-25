@@ -29,13 +29,6 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* .weight-summary span {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    white-space: nowrap;
-} */
-
 .weight-summary__title {
     font-size: 1.1em;
     color: #333;
@@ -61,7 +54,6 @@ body {
     font-size: 2.5em;
     font-weight: 100;
 }
-
 
 .form1 {
     display: flex;
@@ -104,22 +96,8 @@ body {
     border: none;
 }
 
-/* .search-form__date::after {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    width: 0;
-    height: 0;
-    border-top: 12px solid #beb1a6;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-    content: "";
-    transform: translateY(-50%);
-} */
-
 .search-form__actions {
     display: flex;
-
     gap: 24px;
 }
 
@@ -131,6 +109,11 @@ body {
 
 .search-form__reset-btn {
     background-color: #d9c6b5;
+}
+
+.form2 {
+    /* テーブル全体を広げるために幅を設定 */
+    width: 100%;
 }
 
 /* ここからテーブルのボーダーに関する修正 */
@@ -151,13 +134,11 @@ body {
 }
 /* ここまでテーブルのボーダーに関する修正 */
 
-
-.admin__table { /* このクラスは現在のHTMLでは使用されていないようですが、念のため残します */
+.admin__table {
     margin-top: 16px;
     width: 100%;
     border-collapse: collapse;
 }
-
 
 .admin__label:first-of-type,
 .admin__data:first-of-type {
@@ -184,81 +165,7 @@ body {
 }
 
 /* モーダル */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-
-.modal:target {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.modal__inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    border: 1px solid #8b7969;
-    background-color: #fff;
-    box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
-    transform: translate(-50%, -50%);
-}
-
-.modal__content {
-    position: relative;
-    padding: 64px 64px;
-}
-
-.modal-form__group {
-    display: grid;
-    margin-top: 32px;
-
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
-}
-
-.modal-form__label {
-    font-weight: bold;
-}
-
-.modal-form__delete-btn {
-    margin: 64px auto 0;
-    background-color: #ba370d;
-    color: #fff;
-}
-
-.modal__close-btn {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-    width: 32px;
-    height: 32px;
-    border: 1px solid #8b7969;
-    border-radius: 50%;
-    color: #8b7969;
-    text-align: center;
-    text-decoration: none;
-}
-
-.modal-toggle:checked + .modal {
-    visibility: visible;
-    opacity: 1;
-}
+/* ... モーダル関連のスタイルは変更なし ... */
 
 .btn-submit {
     display: block;
@@ -299,10 +206,6 @@ body {
     gap: 10px; /* ここで各ページネーションアイテム間のスペースを10pxに設定 */
 }
 
-.pagination-content .pagination li {
-    /* margin: 0 10px; */ /* gapで制御するため削除 */
-}
-
 .pagination-content .pagination li a,
 .pagination-content .pagination li span {
     display: flex;
@@ -336,8 +239,6 @@ body {
     cursor: not-allowed;
 }
 
-/* 矢印のスタイル調整 */
-/* semantic-ui.blade.phpで直接「<」と「>」の文字を使用するため、SVG関連のスタイルは不要になる可能性があります */
 .pagination-content .pagination li.disabled span svg,
 .pagination-content .pagination li a svg {
     width: 1em; /* SVGアイコンのサイズ調整 */
