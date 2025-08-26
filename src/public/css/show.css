@@ -1,3 +1,9 @@
+body {
+    background-color: rgba(249, 249, 249, 1);
+    margin: 0;
+    padding: 0;
+}
+
 .show {
     margin-top: 70px;
     background-color: white;

@@ -1,5 +1,11 @@
 /* goal.css */
 
+body {
+    background-color: rgba(249, 249, 249, 1);
+    margin: 0;
+    padding: 0;
+}
+
 /* .goal コンテナをヘッダーの下に配置 */
 .goal {
     margin-top: 307px; /* ヘッダーとの間に307pxのスペースを確保 */
