@@ -9,6 +9,7 @@
     <form action="/weight_logs/{{ $weight_log['id'] }}/update" method="POST" novalidate>
         @method('PATCH')
         @csrf
+        <div class="show_title">Weight Log</div>
         <div class="form-title">
             日付
         </div>

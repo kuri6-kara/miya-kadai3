@@ -128,5 +128,5 @@
 }
 
 .register-form__button button {
-  background-color: #a18cd1;
+  background: linear-gradient(to right, #a18cd1, #fbc2eb);
 }
