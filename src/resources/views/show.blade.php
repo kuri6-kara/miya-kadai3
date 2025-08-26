@@ -64,7 +64,7 @@
             運動内容
         </div>
         <div class="form-content">
-            <input type="text" name="exercise_content" placeholder="運動内容を追加" value="{{ $weight_log['exercise_content'] }}" />
+            <textarea name="exercise_content" placeholder="運動内容を追加">{{ old('exercise_content') ? old('exercise_content') : $weight_log['exercise_content'] }}</textarea>
         </div>
         <div class="form__error">
             @error('exercise_content')
@@ -72,23 +72,26 @@
             @enderror
         </div>
 
-        <div class="return-form__button">
-            <button type="button" onclick="location.href='/weight_logs' ">戻る</button>
-        </div>
-        <div class="update-form__button">
-            <button type="submit">更新</button>
+        <div class="show-form_button">
+            <div class="return-form__button">
+                <button type="button" onclick="location.href='/weight_logs' ">戻る</button>
+            </div>
+            <div class="update-form__button">
+                <button type="submit">更新</button>
+            </div>
         </div>
     </form>
 
-    <form class="delete-form" action="/weight_logs/{{ $weight_log }}/delete" method="POST" novalidate>
-        @method('DELETE')
-        @csrf
-        <div class="delete-form__button">
+    <div class="delete-form__button">
+        <form class="delete-form" action="/weight_logs/{{ $weight_log }}/delete" method="POST" novalidate>
+            @method('DELETE')
+            @csrf
             <input type="hidden" name="id" value="{{ $weight_log['id'] }}">
             <button class="delete-form__button-submit" type="submit">
                 <img src="{{ asset('img/delete.png') }}">
             </button>
-        </div>
-    </form>
+        </form>
+    </div>
+
 </div>
 @endsection
