@@ -19,7 +19,7 @@
         <div class="header__right">
             <li class="goal-form__button">
                 <button type="button" onclick="location.href='/weight_logs/goal_setting/index' ">
-                    <img src="{{ asset('img/Group(3).png') }}">
+                    <img src="{{ asset('img/target_weight.png') }}">
                     目標体重設定
                 </button>
             </li>
@@ -28,7 +28,7 @@
                 <form method="POST" action="{{ route('logout') }}" novalidate>
                     @csrf
                     <button type="submit">
-                        <img src="{{ asset('img/Group(4).png') }}">
+                        <img src="{{ asset('img/logout.png') }}">
                         ログアウト
                     </button>
                 </form>

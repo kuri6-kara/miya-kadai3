@@ -86,7 +86,7 @@
         <div class="delete-form__button">
             <input type="hidden" name="id" value="{{ $weight_log['id'] }}">
             <button class="delete-form__button-submit" type="submit">
-                <img src="img/Group (2).png">
+                <img src="{{ asset('img/delete.png') }}">
             </button>
         </div>
     </form>
