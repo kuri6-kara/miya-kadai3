@@ -1,0 +1,41 @@
+@extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/comment.css') }}" />
+@endsection
+
+@section('content')
+<div class="comment">
+    <form action="/weight_logs/{{ $weight_log['id'] }}/comments" method="POST" novalidate>
+        @method('PATCH')
+        @csrf
+        <div class="comment_title">Weight Log</div>
+
+        <div class="comment-content">
+            <label class="comment-date__label" for="">{{ $weight_log['date'] }}</label>
+        </div>
+
+        <div class="form-content">
+            <label class="comment-weight__label" for="">{{ $weight_log['weight'] }}kg</label>
+        </div>
+
+
+        <div class="comment-title2">
+            コメント
+        </div>
+        <div class="comment-content">
+            <textarea name="exercise_content" placeholder="コメントを記入">{{ old('exercise_content') ? old('exercise_content') : $weight_log['exercise_content'] }}</textarea>
+        </div>
+
+        <div class="comment-form_button">
+            <div class="send-form__button">
+                <button type="submit">送信</button>
+            </div>
+            <div class="return-form__button">
+                <button type="button" onclick="location.href='/weight_logs' ">戻る</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+@endsection

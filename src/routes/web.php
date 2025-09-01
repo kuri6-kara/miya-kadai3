@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/weight_logs/{weight_log}', [AdminController::class, 'show']);
     Route::patch('/weight_logs/{weight_log}/update', [AdminController::class, 'update']);
     Route::delete('/weight_logs/{weight_log}/delete', [AdminController::class, 'destroy']);
+
+    Route::get('/weight_logs/{weight_log}/comments', [CommentController::class, 'index']);
+    Route::post('/weight_logs/{weight_log}/comments', [CommentController::class, '']);
 });
