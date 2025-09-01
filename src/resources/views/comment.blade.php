@@ -6,17 +6,18 @@
 
 @section('content')
 <div class="comment">
-    <form action="/weight_logs/{{ $weight_log['id'] }}/comments" method="POST" novalidate>
+    {{-- PATCHメソッドを使うように変更 --}}
+    <form action="/weight_logs/{{ $weight_log->id }}/comments" method="POST" novalidate>
         @method('PATCH')
         @csrf
         <div class="comment_title">Weight Log</div>
 
         <div class="comment-content">
-            <label class="comment-date__label" for="">{{ $weight_log['date'] }}</label>
+            <label class="comment-date__label" for="">{{ $weight_log->date }}</label>
         </div>
 
         <div class="form-content">
-            <label class="comment-weight__label" for="">{{ $weight_log['weight'] }}kg</label>
+            <label class="comment-weight__label" for="">{{ $weight_log->weight }}kg</label>
         </div>
 
 
@@ -24,7 +25,13 @@
             コメント
         </div>
         <div class="comment-content">
-            <textarea name="exercise_content" placeholder="コメントを記入">{{ old('exercise_content') ? old('exercise_content') : $weight_log['exercise_content'] }}</textarea>
+            {{-- `old`ヘルパーと`comment`変数を組み合わせて表示 --}}
+            <textarea name="comment" placeholder="コメントを記入">{{ old('comment', $comment->comment ?? '') }}</textarea>
+            @error('comment')
+            <div class="form__error">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
 
         <div class="comment-form_button">

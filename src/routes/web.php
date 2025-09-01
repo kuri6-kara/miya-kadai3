@@ -40,5 +40,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/weight_logs/{weight_log}/delete', [AdminController::class, 'destroy']);
 
     Route::get('/weight_logs/{weight_log}/comments', [CommentController::class, 'index']);
-    Route::post('/weight_logs/{weight_log}/comments', [CommentController::class, '']);
+    Route::patch('/weight_logs/{weight_log}/comments', [CommentController::class, 'store']);
 });

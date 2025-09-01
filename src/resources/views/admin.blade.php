@@ -194,6 +194,7 @@
                         <th class="admin__label">食事摂取カロリー</th>
                         <th class="admin__label">運動時間</th>
                         <th class="admin__label"></th>
+                        <th class="admin__label">コメント</th>
                     </tr>
                     @foreach($weight_logs as $weight_log)
                     <tr class="admin__row">
@@ -203,6 +204,11 @@
                         <td class="admin__data">{{$weight_log->exercise_time}}</td>
                         <td class="admin__data">
                             <a href="/weight_logs/{{$weight_log->id}}">
+                                <img src="{{ asset('img/Group.png') }}">
+                            </a>
+                        </td>
+                        <td class="admin__data">
+                            <a href="/weight_logs/{{$weight_log->id}}/comments">
                                 <img src="{{ asset('img/Group.png') }}">
                             </a>
                         </td>
