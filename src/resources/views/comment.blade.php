@@ -44,5 +44,18 @@
         </div>
     </form>
 
+    @foreach ($comments as $comment)
+    <tr class="comment-table__row">
+        <td class="comment-table__item">
+            <form class="update-form">
+                <div class="update-form__item">
+                    <p class="update-form__item-input">{{ $comment['comment'] }}</p>
+                </div>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+
+
 </div>
 @endsection
