@@ -1,0 +1,153 @@
+/* comment.css */
+
+body {
+    background-color: rgba(249, 249, 249, 1);
+    margin: 0;
+    padding: 0;
+}
+
+/* 全体的なレイアウト */
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* フォームのコンテナ */
+.comment form {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.comment_title {
+    font-size: 40px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 日付と体重を横並びに配置 */
+.comment-info-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.comment-date__label,
+.comment-weight__label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-content__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* コメント入力欄とボタンを横並びに配置 */
+.comment-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 要素間の隙間 */
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.comment-content textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    /* min-height: 80px; */
+}
+
+.comment-form_button {
+    padding-top: 22px;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.send-form__button button,
+.return-form__button button {
+    /* padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold; */
+    width: 100px;
+    margin: 0;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-decoration: none;
+}
+
+.send-form__button button {
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+    color: white;
+}
+
+.return-form__button button {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* コメント履歴のタイトル */
+.comment-history-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #555;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* コメントとユーザー名を横並びに配置 */
+.comment-display-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comment-display-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.comment-display-user {
+    font-weight: bold;
+    min-width: 80px; /* ユーザー名の幅を固定して揃える */
+}
+
+.comment-display-text {
+    flex-grow: 1;
+    color: #444;
+}

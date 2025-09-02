@@ -10,37 +10,35 @@
         @csrf
         <div class="comment_title">Weight Log</div>
 
-        <div class="comment-content">
-            <label class="comment-date__label" for="">日付: {{ $weight_log->date }}</label>
+        <div class="comment-info-container">
+            <div class="comment-date__label">日付: {{ $weight_log->date }}</div>
+            <div class="comment-weight__label">体重: {{ $weight_log->weight }}kg</div>
         </div>
 
-        <div class="form-content">
-            <label class="comment-weight__label" for="">体重: {{ $weight_log->weight }}kg</label>
-        </div>
-
-
-        <div class="comment-title2">
-            コメントを記入
-        </div>
-        <div class="comment-content">
-            <textarea name="comment" placeholder="コメントを記入">{{ old('comment') }}</textarea>
-            @error('comment')
-            <div class="form__error">
-                {{ $message }}
+        <div class="comment-input-container">
+            <div class="comment-content">
+                <div class="comment-content__title">コメント</div>
+                <textarea name="comment" placeholder="コメントを記入">{{ old('comment') }}</textarea>
+                @error('comment')
+                <div class="form__error">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
-            @enderror
-        </div>
-
-        <div class="comment-form_button">
-            <div class="send-form__button">
-                <button type="submit">送信</button>
-            </div>
-            <div class="return-form__button">
-                <button type="button" onclick="location.href='/weight_logs' ">戻る</button>
+            <div class="comment-form_button">
+                <div class="send-form__button">
+                    <button type="submit">送信</button>
+                </div>
+                <div class="return-form__button">
+                    <button type="button" onclick="location.href='/weight_logs' ">戻る</button>
+                </div>
             </div>
         </div>
     </form>
 
+    <div class="comment-history-title">
+        コメント一覧
+    </div>
     @foreach ($comments as $comment)
     <div class="comment-display-container">
         <div class="comment-display-item">
@@ -52,6 +50,5 @@
         </div>
     </div>
     @endforeach
-
 </div>
 @endsection
