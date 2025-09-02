@@ -32,6 +32,7 @@ class GoalController extends Controller
             $data                        // 更新または作成するデータ
         );
 
-        return redirect('/weight_logs');
+        // return redirect('/weight_logs');
+        return redirect()->route('index');
     }
 }

@@ -22,7 +22,7 @@ use App\Http\Controllers\CommentController;
 
 Route::middleware('auth')->group(function () {
     // AdminControllerの基本ルート
-    Route::get('/weight_logs', [AdminController::class, 'index']);
+    Route::get('/weight_logs', [AdminController::class, 'index'])->name('index');
     // Route::get('/weight_logs/search', [AdminController::class, 'search']);
     Route::post('/weight_logs/create', [AdminController::class, 'store']);
 
