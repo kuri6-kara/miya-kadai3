@@ -9,31 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    /**
-     * コメントページを表示します。
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $weight_log_id
-     * @return \Illuminate\View\View
-     */
     public function index(Request $request, $weight_log_id)
     {
         // weight_log_idと認証済みユーザーIDに紐づくWeightLogを取得
         $weight_log = Weight_log::where('user_id', Auth::id())->findOrFail($weight_log_id);
 
         // その日のWeightLogに紐づくすべてのコメントを取得
-        $comments = Comment::where('weight_log_id', $weight_log->id)->get();
+        // 新しいコメントが一番上に表示されるように並べ替え
+        $comments = Comment::where('weight_log_id', $weight_log->id)->orderBy('created_at', 'desc')->get();
 
         return view('comment', compact('weight_log', 'comments'));
     }
 
-    /**
-     * 新しいコメントを保存し、同じページにリダイレクトします。
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $weight_log_id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function store(Request $request, $weight_log_id)
     {
         $request->validate([

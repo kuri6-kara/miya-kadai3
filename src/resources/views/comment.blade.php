@@ -44,7 +44,10 @@
     @foreach ($comments as $comment)
     <div class="comment-display-container">
         <div class="comment-display-item">
-            <p class="comment-display-user">{{ $comment->user->name ?? '名無しさん' }}</p>
+            <p class="comment-display-user">
+                {{-- ユーザー名が存在すれば表示、なければ「名無しさん」と表示 --}}
+                {{ $comment->user->name ?? '名無しさん' }}
+            </p>
             <p class="comment-display-text">{{ $comment->comment }}</p>
         </div>
     </div>
