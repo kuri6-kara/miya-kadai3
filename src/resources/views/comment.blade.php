@@ -39,7 +39,7 @@
     <div class="comment-history-title">
         コメント一覧
     </div>
-    @foreach ($comments as $comment)
+    @foreach ($weight_log->comment as $comment)
     <div class="comment-display-container">
         <div class="comment-display-item">
             <p class="comment-display-user">

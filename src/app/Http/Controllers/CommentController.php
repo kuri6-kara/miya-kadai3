@@ -13,12 +13,12 @@ class CommentController extends Controller
     {
         // weight_log_idと認証済みユーザーIDに紐づくWeightLogを取得
         $weight_log = Weight_log::where('user_id', Auth::id())->findOrFail($weight_log_id);
-
+dump($weight_log->comment);
         // その日のWeightLogに紐づくすべてのコメントを取得
         // 新しいコメントが一番上に表示されるように並べ替え
-        $comments = Comment::where('weight_log_id', $weight_log->id)->orderBy('created_at', 'desc')->get();
+        // $comments = Comment::where('weight_log_id', $weight_log->id)->orderBy('created_at', 'desc')->get();
 
-        return view('comment', compact('weight_log', 'comments'));
+        return view('comment', compact('weight_log'));
     }
 
 
