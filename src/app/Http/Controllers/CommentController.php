@@ -9,15 +9,31 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    /**
+     * コメントページを表示します。
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $weight_log_id
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request, $weight_log_id)
     {
+        // weight_log_idと認証済みユーザーIDに紐づくWeightLogを取得
         $weight_log = Weight_log::where('user_id', Auth::id())->findOrFail($weight_log_id);
 
-        $comment = $weight_log->comment()->first();
+        // その日のWeightLogに紐づくすべてのコメントを取得
+        $comments = Comment::where('weight_log_id', $weight_log->id)->get();
 
-        return view('comment', compact('weight_log', 'comment'));
+        return view('comment', compact('weight_log', 'comments'));
     }
 
+    /**
+     * 新しいコメントを保存し、同じページにリダイレクトします。
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $weight_log_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request, $weight_log_id)
     {
         $request->validate([
@@ -26,11 +42,13 @@ class CommentController extends Controller
 
         $weight_log = Weight_log::where('user_id', Auth::id())->findOrFail($weight_log_id);
 
-        $comment = Comment::updateOrCreate(
-            ['weight_log_id' => $weight_log->id, 'user_id' => Auth::id()],
-            ['comment' => $request->input('comment')]
-        );
+        Comment::create([
+            'user_id' => Auth::id(),
+            'weight_log_id' => $weight_log->id,
+            'comment' => $request->input('comment')
+        ]);
 
-        return redirect('/weight_logs');
+        // コメント送信後、体重管理画面に戻るのではなく、コメントページへリダイレクト
+        return redirect()->route('comments.index', ['weight_log' => $weight_log_id]);
     }
 }
